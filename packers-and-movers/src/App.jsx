@@ -1,12 +1,13 @@
-// import "./App.css";
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [count, setCount] = useState(0);
+
   return (
-    <>
-      <div>
-        <span className="text-3xl underline">Hello dear</span>
-      </div>
-    </>
+    <div className="bg-amber-400">
+      <p className="read-the-docs">Project basic structure</p>
+    </div>
   );
 }
 
