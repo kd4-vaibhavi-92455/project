@@ -1,0 +1,2 @@
+maintenance_id,vehicle_id,service_date,service_details,cost,next_due_date
+1,1,2025-08-10,"Engine oil and filter change, tire rotation.",8500.00,2026-02-10

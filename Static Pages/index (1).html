@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packers & Movers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Packers & Movers</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="login.html">User Login</a></li>
+            <li><a href="quote.html">Request Quote</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Fast, Reliable & Safe Packers & Movers</h1>
+            <p>We make your shifting easy, affordable, and stress-free.</p>
+            <div class="hero-buttons">
+                <a href="#get-started" class="btn primary">Get Started</a>
+                <a href="quote.html" class="btn secondary">Request Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Why Choose Us?</h2>
+        <div class="feature-cards">
+            <div class="card">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Easy Booking</h3>
+                <p>Book your move online in minutes.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-user-check"></i>
+                <h3>Trusted Drivers</h3>
+                <p>Verified and experienced staff.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Real-Time Tracking</h3>
+                <p>Track your shipment easily.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>About Us</h2>
+                <p>At Packers & Movers, our mission is to provide seamless, reliable, and affordable moving services. With years of experience, we ensure your belongings are handled with care, delivered on time, and with utmost professionalism.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://via.placeholder.com/400x300?text=Moving+Truck" alt="Moving Truck">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-cards">
+            <div class="card">
+                <img src="https://via.placeholder.com/80" alt="Customer 1">
+                <h3>John Doe</h3>
+                <p>"Amazing service! The team was professional and made my move stress-free."</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/80" alt="Customer 2">
+                <h3>Jane Smith</h3>
+                <p>"Fast and reliable. My belongings were handled with great care."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Packers & Movers | <a href="#">Privacy Policy</a> | <a href="#contact">Contact Us</a></p>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

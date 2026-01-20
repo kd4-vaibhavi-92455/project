@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Packers & Movers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Packers & Movers</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="login.html">User Login</a></li>
+            <li><a href="quote.html">Request Quote</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Services Section -->
+    <section class="services">
+        <h2>Our Services</h2>
+        <p>Choose the right moving service for your needs.</p>
+        <div class="service-cards">
+            <div class="card">
+                <i class="fas fa-home"></i>
+                <h3>House Relocation</h3>
+                <p>Smooth home shifting services.</p>
+                <a href="quote.html" class="btn secondary">Request Quote</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-building"></i>
+                <h3>Office Relocation</h3>
+                <p>Efficient business and corporate moves.</p>
+                <a href="quote.html" class="btn secondary">Request Quote</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-car"></i>
+                <h3>Vehicle Transport</h3>
+                <p>Safe transport of bikes and cars.</p>
+                <a href="quote.html" class="btn secondary">Request Quote</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-truck"></i>
+                <h3>Local & Long Distance Moves</h3>
+                <p>Within city or intercity.</p>
+                <a href="quote.html" class="btn secondary">Request Quote</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-box"></i>
+                <h3>Packing & Unpacking</h3>
+                <p>Professional packing support.</p>
+                <a href="quote.html" class="btn secondary">Request Quote</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-warehouse"></i>
+                <h3>Storage Facility</h3>
+                <p>Short and long-term storage options.</p>
+                <a href="quote.html" class="btn secondary">Request Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Packers & Movers | <a href="#">Privacy Policy</a> | <a href="#contact">Contact Us</a></p>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,478 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    background: url('images/packers\ image.webp') no-repeat center/cover fixed;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #0052D4, #6FB1FC);
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+}
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: url('https://via.placeholder.com/1920x1080?text=Truck+Background') no-repeat center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons .btn {
+    padding: 12px 24px;
+    margin: 0 10px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.btn.primary {
+    background: #0052D4;
+    color: #fff;
+}
+
+.btn.secondary {
+    background: #6FB1FC;
+    color: #fff;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Features Section */
+.features {
+    padding: 60px 20px;
+    text-align: center;
+    background: #f9f9f9;
+}
+
+.features h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.feature-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card i {
+    font-size: 40px;
+    color: #0052D4;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* About Section */
+.about {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-content {
+    display: flex;
+    max-width: 1200px;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    flex: 1;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 60px 20px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.testimonial-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-cards .card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+.footer {
+    background: #0052D4;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Login Page */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #43CEA2, #185A9D);
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-card h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.login-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-card input,
+.login-card select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.login-card button {
+    padding: 12px;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.register-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #0052D4;
+    text-decoration: none;
+}
+
+/* Registration Page */
+.register-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #FF512F, #DD2476);
+}
+
+.register-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.register-card h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.register-card h2 i {
+    color: #DD2476;
+    margin-right: 10px;
+}
+
+.register-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.register-card input,
+.register-card select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.register-card button {
+    padding: 12px;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.login-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #DD2476;
+    text-decoration: none;
+}
+
+/* Services Page */
+.services {
+    padding: 60px 20px;
+    text-align: center;
+    background: #fff;
+}
+
+.services h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #0052D4, #6FB1FC);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.services p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-cards .card i {
+    font-size: 40px;
+    color: #0052D4;
+    margin-bottom: 15px;
+}
+
+/* Quote Page */
+.quote-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6FB1FC, #fff);
+    padding: 100px 20px;
+}
+
+.quote-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.quote-card h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.quote-card h2 i {
+    color: #0052D4;
+    margin-right: 10px;
+}
+
+.quote-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.quote-card input,
+.quote-card select,
+.quote-card textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.quote-card textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.confirmation-message {
+    margin-top: 20px;
+    color: #0052D4;
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #0052D4;
+        padding: 20px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero-buttons .btn {
+        display: block;
+        margin: 10px auto;
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+}
