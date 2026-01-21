@@ -1,16 +1,33 @@
 import { useState } from "react";
 import "./App.css";
 import "./index.css";
-import ThemeProvider from "../providers/ThemeProvider";
+// import ThemeProvider from "../providers/ThemeProvider";
+import { Route, Routes } from "react-router";
+import ThemeProvider from "./providers/ThemeProvider";
+import Home from "./pages/Home";
+import PublicLayout from "./layouts/PublicLayout";
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="bg-amber-400">
+      {/* <div className="bg-amber-400">
         <p className="read-the-docs dark text-primary">
           Project basic structure..
         </p>
-      </div>
+      </div> */}
+      <Routes>
+        {/* visitor layout */}
+        <Route path="/" element={<PublicLayout />}>
+          <Route index element={<Home />} />
+          {/* <Route path="about" element={<About />} /> */}
+          {/* <Route path="contact" element={<Contact />} /> */}
+          {/* <Route path="services" element={<Services />} /> */}
+        </Route>
+        {/* user layout */}
+        {/* <Route path="/user">
+          <Route index element={<Navbar />} />
+        </Route> */}
+      </Routes>
     </ThemeProvider>
   );
 }

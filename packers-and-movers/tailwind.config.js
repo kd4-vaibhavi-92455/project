@@ -1,13 +1,29 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
-  darkMode: "class", // Add this line
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        primary: "#0052CC",
-        secondary: "#FF6B00",
-        accent: "#00C4B4",
+        brand: {
+          primary: "#0D3B66", // Deep Corporate Blue
+          secondary: "#1171BA", // Active UI Blue
+          accent: "#FF8F00", // High-Attention Orange (for Quote forms)
+          success: "#00C853", // Confirmation Green
+        },
+        neutral: {
+          dark: "#1A202C", // Professional Grey-Black for text
+          surface: "#F8FAFC", // Soft Grey background
+          border: "#E2E8F0", // Subtle separators
+        },
+      },
+      fontFamily: {
+        sans: ["Inter", "Roboto", "sans-serif"],
+        display: ["Montserrat", "sans-serif"],
+      },
+      boxShadow: {
+        professional:
+          "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)",
       },
     },
   },
