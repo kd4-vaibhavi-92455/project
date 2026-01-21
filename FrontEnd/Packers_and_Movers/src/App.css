@@ -1,0 +1,245 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Top Bar */
+.top-bar {
+  background: orange;
+  color: white;
+  padding: 8px 40px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.admin-btn {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: white;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar li {
+  margin-left: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+}
+
+.active a {
+  color: orange;
+}
+
+/* Hero */
+.hero img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  text-align: center;
+  padding: 15px;
+}
+
+/* Contact */
+.contact-wrapper {
+  display: flex;
+  width: 100%;
+  padding: 40px 100px;
+  box-sizing: border-box;
+}
+
+.address,
+.contact-form {
+  flex: 1;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 120px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  background: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+}
+
+/* Footer */
+.footer {
+  background: #111;
+  color: #aaa;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+/* Login Page */
+.login-wrapper {
+  width: 100%;
+  padding: 50px 120px;
+  box-sizing: border-box;
+}
+
+.login-title {
+  color: orange;
+  margin-bottom: 25px;
+}
+
+.login-form {
+  width: 60%;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  background: #f2f2f2;
+  border: none;
+  outline: none;
+}
+
+.login-btn {
+  width: 100%;
+  background: orange;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.register-text {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.register-text span {
+  color: orange;
+  cursor: pointer;
+}
+/* Registration Page */
+.register-wrapper {
+  width: 100%;
+  padding: 50px 120px;
+  box-sizing: border-box;
+}
+
+.register-title {
+  color: orange;
+  margin-bottom: 25px;
+}
+
+.register-form {
+  width: 70%;
+}
+
+.register-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  background: #f2f2f2;
+  border: none;
+  outline: none;
+}
+
+.email-msg {
+  color: green;
+  font-size: 13px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.register-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.register-buttons button {
+  flex: 1;
+  background: orange;
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.login-link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: orange;
+  text-decoration: none;
+}
+
+.success-msg {
+  color: green;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.error {
+  color: red;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  margin: 60px auto;
+}
