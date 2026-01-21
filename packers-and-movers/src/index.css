@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@theme {
+  /* Default Colors (Light Mode) */
+  --color-primary: #0052CC;
+  --color-background: #ffffff;
+  --color-text: #1a1a1a;
+}
+
+/* Dark Mode Overrides */
+@layer base {
+  .dark {
+    --color-primary: #00C4B4;
+    --color-background: #121212;
+    --color-text: #f3f4f6;
+  }
+}
