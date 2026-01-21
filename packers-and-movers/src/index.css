@@ -7,10 +7,12 @@
   --color-text: #1a1a1a;
 }
 
+@variant dark (&:where(.dark, .dark *));
+
 /* Dark Mode Overrides */
 @layer base {
   .dark {
-    --color-primary: #00C4B4;
+    --color-primary: #c40700;
     --color-background: #121212;
     --color-text: #f3f4f6;
   }
