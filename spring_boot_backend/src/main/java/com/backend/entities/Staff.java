@@ -13,7 +13,7 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "staff")
-@AttributeOverride(name = "id", column = @Column(name = "staff_id"))
+//@AttributeOverride(name = "id", column = @Column(name = "staff_id"))
 @NoArgsConstructor
 @Getter
 @Setter
