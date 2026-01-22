@@ -1,9 +1,9 @@
 const WeFocusQuality = () => {
   return (
-    <div className="p-20 relative h-96 sm:h-64 md:h-80 bg-gray-900">
+    <div className="p-10 md:p-20 relative h-[500px] bg-gray-900">
       {/* Background Image Container */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
         style={{ backgroundImage: "url('/images/we-focus-quality.png')" }}
       ></div>
 
