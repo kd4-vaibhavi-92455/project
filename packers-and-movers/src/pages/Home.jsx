@@ -7,6 +7,7 @@ import Container from "../components/common/Container";
 // import QuoteForm from "../components/QuoteForm";
 // import FormLayoutWithImage from "../components/FormLayoutWithImage";
 import QuoteForm from "../components/QuoteForm";
+import Footer from './../components/common/Footer';
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <MovingProceduresUI />
       <div style={{ position: "relative" }}>
         <WeFocusQuality />
+<<<<<<< HEAD
         <div
           style={{
             position: "absolute",
@@ -33,6 +35,13 @@ const Home = () => {
       </div>
 
       <div style={{ height: "200vh" }}> </div>
+=======
+        
+      </Container>
+      <Footer/>
+      
+      {/* <div style={{ height: "200vh" }}> </div> */}
+>>>>>>> origin/bhagyashree
       {/* <div className="h-20 w-20 bg-brand-primary"></div> */}
     </div>
   );
