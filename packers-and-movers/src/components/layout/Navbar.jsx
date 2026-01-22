@@ -4,6 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import PhoneIcon from "@mui/icons-material/Phone";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -63,6 +64,11 @@ const Navbar = () => {
             <button className="flex items-center gap-2 bg-[#1171BA] hover:bg-[#0D3B66] text-white px-5 py-2 rounded font-bold transition-all active:scale-95">
               <PhoneIcon sx={{ fontSize: 18 }} />
               Get Quote
+            </button>
+
+            <button className="flex items-center gap-2 text-[#1171BA] hover:text-[#0D3B66] px-5 py-2 rounded border-2 border-[#1171BA] hover:border-[#0D3B66] font-bold transition-all active:scale-95">
+              <DashboardIcon sx={{ fontSize: 18 }} />
+              Track shipment
             </button>
           </div>
 
