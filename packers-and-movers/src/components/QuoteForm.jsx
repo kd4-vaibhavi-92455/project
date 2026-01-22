@@ -55,7 +55,7 @@ const MainContainer = styled(Box)({
 
 const FormWrapper = styled(Box)({
   flex: 1,
-  padding: "40px 32px",
+  // padding: "40px 32px",
 });
 
 const ImageContainer = styled(Box)({
@@ -124,9 +124,6 @@ const SubmitButton = styled(Button)({
   },
 });
 
-/* ===============================
-   COMPONENT
-================================ */
 const QuoteForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -165,10 +162,17 @@ const QuoteForm = () => {
       onSubmit={handleSubmit}
       sx={{
         flexDirection: { xs: "column", lg: "row" },
+        px: { xs: 1, sm: 2, lg: 0 },
       }}
     >
       {/* FORM */}
-      <FormWrapper>
+      <FormWrapper
+        sx={{
+          px: { xs: 2, sm: 3, md: 4 },
+          py: { xs: 3, sm: 4 },
+          maxWidth: { xs: "100%", md: "unset" },
+        }}
+      >
         <SectionTitle>Personal Data</SectionTitle>
 
         <FormRow
@@ -178,6 +182,7 @@ const QuoteForm = () => {
               sm: "repeat(2, 1fr)",
               md: "repeat(3, 1fr)",
             },
+            gap: { xs: "14px", sm: "20px" },
           }}
         >
           <TextField

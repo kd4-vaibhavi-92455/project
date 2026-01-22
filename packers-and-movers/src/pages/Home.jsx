@@ -1,41 +1,42 @@
 import React from "react";
-import Navbar from "../components/layout/Navbar";
 import HeroSection from "../components/HeroSection";
 import MovingProceduresUI from "../components/MovingProceduresUI";
 import WeFocusQuality from "../components/WeFocusQuality";
 import Container from "../components/common/Container";
-// import QuoteForm from "../components/QuoteForm";
-// import FormLayoutWithImage from "../components/FormLayoutWithImage";
 import QuoteForm from "../components/QuoteForm";
 import ServicesSection from "../components/ServicesSection";
 
 const Home = () => {
   return (
     <div>
-      <Navbar />
       <HeroSection />
       <MovingProceduresUI />
-      <div style={{ position: "relative", marginBottom: "300px" }}>
+
+      {/* Wrapper */}
+      <div className="relative 2xl:mb-[300px] mb-0">
         <WeFocusQuality />
+
+        {/* Quote Form */}
         <div
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: "110%",
-            width: "100%",
-            transform: "translate(-50%, -50%)",
-          }}
+          className="
+            static
+            2xl:absolute
+            2xl:left-1/2
+            2xl:top-[110%]
+            2xl:w-full
+            2xl:-translate-x-1/2
+            2xl:-translate-y-1/2
+            mt-12
+            2xl:mt-0
+          "
         >
-          {/* <div style={{ position: "absolute", left: "50px", top: "80%" }}> */}
           <Container>
             <QuoteForm />
           </Container>
         </div>
       </div>
-      <ServicesSection />
 
-      <div style={{ height: "200vh" }}> </div>
-      {/* <div className="h-20 w-20 bg-brand-primary"></div> */}
+      <ServicesSection />
     </div>
   );
 };
