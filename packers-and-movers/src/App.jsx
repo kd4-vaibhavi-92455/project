@@ -7,6 +7,8 @@ import ThemeProvider from "./providers/ThemeProvider";
 import Home from "./pages/Home";
 import PublicLayout from "./layouts/PublicLayout";
 import About from "./pages/About";
+import Footer from "./components/common/Footer";
+import CustomerDashboard from "./modules/customer/CustomerDashboard";
 
 function App() {
   return (
