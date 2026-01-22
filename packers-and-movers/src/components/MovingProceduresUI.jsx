@@ -74,7 +74,7 @@ const MovingProceduresUI = () => {
                   transition-all duration-300
                   hover:bg-[#1171BA]
                   hover:text-white
-                  w-[300px]
+                  w-[370px]
                 "
                 sx={{
                   minHeight: "260px",

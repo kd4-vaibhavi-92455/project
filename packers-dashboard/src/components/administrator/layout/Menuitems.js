@@ -10,25 +10,28 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { ExpandLess, ExpandMore, Inbox, Logout, StarBorder } from "@mui/icons-material";
+import {
+  ExpandLess,
+  ExpandMore,
+  Logout,
+  StarBorder,
+} from "@mui/icons-material";
 import { MenuDataset } from "../../../utils/helper";
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 const MenuItems = () => {
-
   const [open, setOpen] = useState({});
 
   const handleClick = (index) => {
-    setOpen((prev)=>({
-      [index]: !prev[index]
-    }))
-  } 
+    setOpen((prev) => ({
+      [index]: !prev[index],
+    }));
+  };
 
-   return (
-    <div>      
+  return (
+    <div>
       <List>
         {MenuDataset?.map((item, index) => (
           <React.Fragment key={index}>
@@ -37,10 +40,14 @@ const MenuItems = () => {
                 <ShoppingCartOutlinedIcon />
               </ListItemIcon>
               <ListItemText primary={item.title} />
-              {open[index] ? <ExpandLess fontSize="18px"/> : <ExpandMore fontSize="18px" />}
+              {open[index] ? (
+                <ExpandLess fontSize="18px" />
+              ) : (
+                <ExpandMore fontSize="18px" />
+              )}
             </ListItemButton>
 
-            {item?.submenu.map((subitem,i) => (
+            {item?.submenu.map((subitem, i) => (
               <Collapse key={i} in={open[index]} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                   <ListItemButton
@@ -60,15 +67,15 @@ const MenuItems = () => {
         ))}
       </List>
       <Divider />
-      
-     <List>
-     <ListItemButton>
-        <ListItemIcon>
-        <Logout />
-        </ListItemIcon>
-        <ListItemText primary="Logout" />
-      </ListItemButton>
-     </List>
+
+      <List>
+        <ListItemButton>
+          <ListItemIcon>
+            <Logout />
+          </ListItemIcon>
+          <ListItemText primary="Logout" />
+        </ListItemButton>
+      </List>
     </div>
   );
 };

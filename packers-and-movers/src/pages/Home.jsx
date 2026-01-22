@@ -6,6 +6,9 @@ import WeFocusQuality from "../components/WeFocusQuality";
 import Container from "../components/common/Container";
 import QuoteForm from './../components/QuoteForm';
 import Footer from './../components/common/Footer';
+// import QuoteForm from "../components/QuoteForm";
+// import FormLayoutWithImage from "../components/FormLayoutWithImage";
+import QuoteForm from "../components/QuoteForm";
 
 const Home = () => {
   return (
@@ -13,8 +16,23 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <MovingProceduresUI />
-      <WeFocusQuality />
-      <QuoteForm />
+      <div style={{ position: "relative" }}>
+        <WeFocusQuality />
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "125%",
+            width: "100%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          {/* <div style={{ position: "absolute", left: "50px", top: "80%" }}> */}
+          <Container>
+            <QuoteForm />
+          </Container>
+        </div>
+      </div>
 
       <Container></Container>
       

@@ -18,8 +18,8 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "/home" },
-    { name: "Services", href: "#services" },
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
     { name: "Process", href: "#process" },
     { name: "Tracking", href: "#tracking" },
     { name: "About", href: "/about" },
@@ -29,7 +29,7 @@ const Navbar = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-500 ${
         isScrolled ? "bg-white py-3 shadow-md" : "bg-transparent py-6"
-        }`}
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
@@ -38,7 +38,7 @@ const Navbar = () => {
             <span
               className={`text-2xl font-bold transition-colors ${
                 isScrolled ? "text-[#0D3B66]" : "text-white"
-                }`}
+              }`}
             >
               <img src="/images/logo.png" width="100px" />
               {/* LOGI<span className="text-[#1171BA]">MOVE</span> */}
@@ -53,7 +53,7 @@ const Navbar = () => {
                 href={link.href}
                 className={`text-sm font-medium transition-colors hover:text-[#1171BA] ${
                   isScrolled ? "text-gray-900" : "text-gray/700"
-                  }`}
+                }`}
               >
                 {link.name}
               </a>
