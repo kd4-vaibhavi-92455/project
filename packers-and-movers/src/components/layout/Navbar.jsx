@@ -40,7 +40,7 @@ const Navbar = () => {
                 isScrolled ? "text-[#0D3B66]" : "text-white"
               }`}
             >
-              <img src="public/images/logo.png" width="100px" />
+              <img src="/images/logo.png" width="100px" />
               {/* LOGI<span className="text-[#1171BA]">MOVE</span> */}
             </span>
           </div>

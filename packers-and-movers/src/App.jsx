@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import "./index.css";
 // import ThemeProvider from "../providers/ThemeProvider";
@@ -10,11 +10,6 @@ import PublicLayout from "./layouts/PublicLayout";
 function App() {
   return (
     <ThemeProvider>
-      {/* <div className="bg-amber-400">
-        <p className="read-the-docs dark text-primary">
-          Project basic structure..
-        </p>
-      </div> */}
       <Routes>
         {/* visitor layout */}
         <Route path="/" element={<PublicLayout />}>

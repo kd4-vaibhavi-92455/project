@@ -4,6 +4,11 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  @apply font-sans;
+}
+
+
 @theme {
   /* Default Colors (Light Mode) */
   --color-primary: #0052CC;

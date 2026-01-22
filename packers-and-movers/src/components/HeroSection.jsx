@@ -1,5 +1,3 @@
-// import React from "react";
-
 const HeroSection = () => {
   return (
     <div className="relative h-[600px] w-full">
@@ -13,13 +11,13 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center px-12 md:px-24 text-[#1171BA] max-w-3xl">
-        <h1 className="font-display text-4xl md:text-6xl font-extrabold leading-tight">
+        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight jost">
           Intelligent Logistics.
           <br />
           Stable Transitions.
         </h1>
 
-        <p className="mt-4 font-sans text-base md:text-lg text-[#0D3B66]">
+        <p className="mt-4 text-base md:text-lg text-[#0D3B66] font-display">
           More than just a move - it’s a strategically planned relocation. We
           combine precision handling with absolute reliability…
         </p>
@@ -32,19 +30,3 @@ const HeroSection = () => {
   );
 };
 export default HeroSection;
-
-// const HeroSection = () => {
-//   return (
-//     <div style={{ backgroundColor: "red" }}>
-//       <div
-//         style={{
-//           border: "5px solid black",
-//         }}
-//       >
-//         <img src="images/hero-img.png" width="100%" />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default HeroSection;
