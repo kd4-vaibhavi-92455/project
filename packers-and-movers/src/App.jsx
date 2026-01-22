@@ -16,7 +16,7 @@ function App() {
       <Routes>
         {/* visitor layout */}
         <Route path="/" element={<PublicLayout />}>
-          <Route path="/home" index element={<Home />} />
+          <Route path="/" index element={<Home />} />
           <Route path="/about" element={<About />} />
 
           <Route path="/footer" element={<Footer />} />
