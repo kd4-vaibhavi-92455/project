@@ -5,6 +5,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import PhoneIcon from "@mui/icons-material/Phone";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import { useNavigate } from "react-router";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,6 +18,7 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  const navigate = useNavigate();
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -66,7 +68,10 @@ const Navbar = () => {
               Get Quote
             </button>
 
-            <button className="flex items-center gap-2 text-[#1171BA] hover:text-[#0D3B66] px-5 py-2 rounded border-2 border-[#1171BA] hover:border-[#0D3B66] font-bold transition-all active:scale-95">
+            <button
+              onClick={() => navigate("/customer")}
+              className="flex items-center gap-2 text-[#1171BA] hover:text-[#0D3B66] px-5 py-2 rounded border-2 border-[#1171BA] hover:border-[#0D3B66] font-bold transition-all active:scale-95"
+            >
               <DashboardIcon sx={{ fontSize: 18 }} />
               Track shipment
             </button>
