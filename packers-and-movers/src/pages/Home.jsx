@@ -7,6 +7,7 @@ import Container from "../components/common/Container";
 // import QuoteForm from "../components/QuoteForm";
 // import FormLayoutWithImage from "../components/FormLayoutWithImage";
 import QuoteForm from "../components/QuoteForm";
+import ServicesSection from "../components/ServicesSection";
 
 const Home = () => {
   return (
@@ -14,13 +15,13 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <MovingProceduresUI />
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative", marginBottom: "300px" }}>
         <WeFocusQuality />
         <div
           style={{
             position: "absolute",
             left: "50%",
-            top: "125%",
+            top: "110%",
             width: "100%",
             transform: "translate(-50%, -50%)",
           }}
@@ -31,6 +32,7 @@ const Home = () => {
           </Container>
         </div>
       </div>
+      <ServicesSection />
 
       <div style={{ height: "200vh" }}> </div>
       {/* <div className="h-20 w-20 bg-brand-primary"></div> */}
