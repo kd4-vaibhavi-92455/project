@@ -4,6 +4,9 @@ import HeroSection from "../components/HeroSection";
 import MovingProceduresUI from "../components/MovingProceduresUI";
 import WeFocusQuality from "../components/WeFocusQuality";
 import Container from "../components/common/Container";
+// import QuoteForm from "../components/QuoteForm";
+import FormLayoutWithImage from "../components/FormLayoutWithImage";
+import QuoteForm from "../components/QuoteForm";
 
 const Home = () => {
   return (
@@ -11,10 +14,11 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <MovingProceduresUI />
-      <Container>
-        <WeFocusQuality />
-      </Container>
-      {/* <div style={{ height: "200vh" }}> </div> */}
+      <WeFocusQuality />
+      <QuoteForm />
+
+      <Container></Container>
+      <div style={{ height: "200vh" }}> </div>
       {/* <div className="h-20 w-20 bg-brand-primary"></div> */}
     </div>
   );
