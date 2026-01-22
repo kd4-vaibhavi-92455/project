@@ -3,11 +3,11 @@ import { useContext } from "react";
 import { createContext } from "react";
 
 // create context
-export const ThemeContext = createContext({ theme: "#000000" }); // need to use variable instead of colors
+export const ThemeContext = createContext({ theme: "#F2F2F2" }); // need to use variable instead of colors
 
 // create provider to provide context to all its children
 function ThemeProvider(props) {
-  const [theme, setTheme] = useState("#000000");
+  const [theme, setTheme] = useState("#F2F2F2");
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <div style={{ backgroundColor: theme }}>

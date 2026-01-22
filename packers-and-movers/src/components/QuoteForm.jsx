@@ -18,8 +18,8 @@ import { styled } from "@mui/material/styles";
 const MainContainer = styled(Box)({
   display: "flex",
   flexDirection: "row",
-  maxWidth: "1200px",
-  margin: "0 auto",
+  // maxWidth: "1200px",
+  // margin: "0 auto",
   backgroundColor: "#fff",
   position: "relative",
 });
@@ -130,7 +130,7 @@ const QuoteForm = () => {
       onSubmit={handleSubmit}
       sx={{
         flexDirection: { xs: "column", lg: "row" },
-        maxWidth: { xs: "100%", lg: "1200px" },
+        // maxWidth: { xs: "100%", lg: "1200px" },
       }}
     >
       <FormWrapper
@@ -339,7 +339,7 @@ const QuoteForm = () => {
           />
         </CheckboxGroup>
 
-        <SubmitButton type="submit" size="large">
+        <SubmitButton type="submit" size="small" fullWidth>
           Request A Quote
         </SubmitButton>
       </FormWrapper>

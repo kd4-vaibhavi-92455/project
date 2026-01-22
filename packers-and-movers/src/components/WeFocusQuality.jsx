@@ -7,7 +7,7 @@ import GppGoodOutlinedIcon from "@mui/icons-material/GppGoodOutlined";
 
 const WeFocusQuality = () => {
   return (
-    <div className="p-10 md:p-20 relative min-h-[450px] bg-gray-900">
+    <div className="px-46 pt-20 pb-50 relative min-h-[450px] bg-gray-900">
       {/* Background Image Container */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
@@ -27,13 +27,6 @@ const WeFocusQuality = () => {
           <p className="text-xl sm:text-2xl font-bold text-yellow-400">
             From Over 25 Years!
           </p>
-
-          {/* Placeholder for the form area you mentioned not to include */}
-          {/* <div className="mt-8 bg-yellow-400 p-4 rounded-lg shadow-lg">
-            <p className="text-gray-900 font-semibold">
-              This is where the form area would start.
-            </p>
-          </div> */}
         </div>
 
         {/* Right Icons/Buttons Area - Changed to flex-row and flex-wrap for horizontal wrap */}
