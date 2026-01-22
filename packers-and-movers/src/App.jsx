@@ -7,6 +7,7 @@ import ThemeProvider from "./providers/ThemeProvider";
 import Home from "./pages/Home";
 import PublicLayout from "./layouts/PublicLayout";
 import About from './pages/About';
+import Footer from './components/common/Footer';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<PublicLayout />}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/footer" element={<Footer />} />
           {/* <Route path="about" element={<About />} /> */}
           {/* <Route path="contact" element={<Contact />} /> */}
           {/* <Route path="services" element={<Services />} /> */}
