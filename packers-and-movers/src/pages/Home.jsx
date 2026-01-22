@@ -11,9 +11,9 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <MovingProceduresUI />
-      <Container>
-        <WeFocusQuality />
-      </Container>
+      <WeFocusQuality />
+
+      <Container></Container>
       {/* <div style={{ height: "200vh" }}> </div> */}
       {/* <div className="h-20 w-20 bg-brand-primary"></div> */}
     </div>
