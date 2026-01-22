@@ -4,6 +4,7 @@ const HeroSection = () => {
       <img
         src="images/hero-img.png"
         className="absolute inset-0 h-full w-full object-cover"
+        alt="hero-section-image"
       />
 
       {/* Overlay */}
