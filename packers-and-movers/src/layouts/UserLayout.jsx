@@ -4,7 +4,7 @@ import Navbar from "../components/layout/Navbar";
 function UserLayout() {
   return (
     <div>
-      <Navbar />
+     
       <Outlet />
     </div>
   );

@@ -5,6 +5,7 @@ import MovingProceduresUI from "../components/MovingProceduresUI";
 import WeFocusQuality from "../components/WeFocusQuality";
 import Container from "../components/common/Container";
 import ContactForm from "../components/ContactForm";
+import Footer from './../components/common/Footer';
 
 
 const About = () => {
@@ -12,6 +13,7 @@ const About = () => {
     <div>
       <Navbar />
       <ContactForm/>
+      <Footer/>
       {/* <div style={{ height: "200vh" }}> </div> */}
       {/* <div className="h-20 w-20 bg-brand-primary"></div> */}
     </div>
