@@ -1,4 +1,3 @@
-// QuoteForm.jsx
 import React, { useState } from "react";
 import {
   Box,
@@ -15,25 +14,55 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
+/* ===============================
+   COMMON INPUT STYLES (KEY PART)
+================================ */
+const commonInputSx = {
+  "& .MuiOutlinedInput-root": {
+    height: "44px",
+    fontSize: "14px",
+    borderRadius: "2px",
+    backgroundColor: "#fff",
+    "& fieldset": {
+      borderColor: "#e5e7eb",
+    },
+    "&:hover fieldset": {
+      borderColor: "#d1d5db",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "#000",
+      borderWidth: "1px",
+    },
+  },
+  "& .MuiInputLabel-root": {
+    fontSize: "13px",
+    color: "#9ca3af",
+    top: "-2px",
+  },
+  "& .MuiInputLabel-root.Mui-focused": {
+    color: "#000",
+  },
+};
+
+/* ===============================
+   LAYOUT STYLES
+================================ */
 const MainContainer = styled(Box)({
   display: "flex",
-  flexDirection: "row",
-  // maxWidth: "1200px",
-  // margin: "0 auto",
   backgroundColor: "#fff",
   position: "relative",
 });
 
 const FormWrapper = styled(Box)({
   flex: 1,
-  padding: "2.5rem 2rem",
+  // padding: "40px 32px",
 });
 
 const ImageContainer = styled(Box)({
   width: "420px",
   flexShrink: 0,
+  display: "block",
   position: "relative",
-  display: { xs: "none", lg: "block" }, // hide on mobile/tablet
 });
 
 const ImageBox = styled(Box)({
@@ -45,53 +74,56 @@ const ImageBox = styled(Box)({
 });
 
 const SectionTitle = styled(Typography)({
-  fontSize: "1.5rem",
+  fontSize: "18px",
   fontWeight: 700,
-  marginBottom: "1.75rem",
+  marginBottom: "20px",
   color: "#000",
 });
 
 const FormRow = styled(Box)({
   display: "grid",
   gridTemplateColumns: "repeat(3, 1fr)",
-  gap: "1.5rem",
-  marginBottom: "1.5rem",
+  gap: "20px",
+  marginBottom: "20px",
 });
 
 const FullRow = styled(Box)({
-  gridColumn: "1 / -1",
   display: "grid",
-  gridTemplateColumns: "repeat(5, 1fr)", // for the 5 dimension fields
-  gap: "1.5rem",
+  gridTemplateColumns: "repeat(5, 1fr)",
+  gap: "20px",
+  marginBottom: "20px",
 });
 
 const CheckboxGroup = styled(FormGroup)({
   display: "flex",
   flexDirection: "row",
-  flexWrap: "wrap",
-  gap: "2rem 3rem",
-  marginTop: "1.5rem",
-  marginBottom: "2.5rem",
-});
-
-const SubmitButton = styled(Button)({
-  backgroundColor: "#000",
-  color: "#fff",
-  padding: "14px 40px",
-  fontSize: "1.125rem",
-  fontWeight: 600,
-  borderRadius: "0",
-  textTransform: "none",
-  width: "100%",
-  maxWidth: "380px",
-  margin: "0 auto",
-  display: "block",
-  "&:hover": {
-    backgroundColor: "#222",
+  gap: "24px",
+  marginTop: "16px",
+  marginBottom: "32px",
+  "& .MuiFormControlLabel-label": {
+    fontSize: "13px",
+    color: "#6b7280",
   },
 });
 
-// Responsive adjustments using sx prop where needed
+const SubmitButton = styled(Button)({
+  backgroundColor: "#111827",
+  color: "#fff",
+  height: "48px",
+  fontSize: "14px",
+  fontWeight: 600,
+  borderRadius: "0",
+  textTransform: "uppercase",
+  letterSpacing: "0.04em",
+  width: "100%",
+  maxWidth: "420px",
+  margin: "0 auto",
+  display: "block",
+  "&:hover": {
+    backgroundColor: "#000",
+  },
+});
+
 const QuoteForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -121,7 +153,7 @@ const QuoteForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    console.log(formData);
   };
 
   return (
@@ -130,15 +162,19 @@ const QuoteForm = () => {
       onSubmit={handleSubmit}
       sx={{
         flexDirection: { xs: "column", lg: "row" },
-        // maxWidth: { xs: "100%", lg: "1200px" },
+        px: { xs: 1, sm: 2, lg: 0 },
       }}
     >
+      {/* FORM */}
       <FormWrapper
         sx={{
-          padding: { xs: "1.5rem 1rem", sm: "2rem 1.5rem", md: "2.5rem 2rem" },
+          px: { xs: 2, sm: 3, md: 4 },
+          py: { xs: 3, sm: 4 },
+          maxWidth: { xs: "100%", md: "unset" },
         }}
       >
         <SectionTitle>Personal Data</SectionTitle>
+
         <FormRow
           sx={{
             gridTemplateColumns: {
@@ -146,40 +182,37 @@ const QuoteForm = () => {
               sm: "repeat(2, 1fr)",
               md: "repeat(3, 1fr)",
             },
+            gap: { xs: "14px", sm: "20px" },
           }}
         >
           <TextField
-            required
-            fullWidth
+            size="small"
             label="Name*"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            variant="outlined"
+            sx={commonInputSx}
           />
           <TextField
-            required
-            fullWidth
+            size="small"
             label="Email*"
             name="email"
-            type="email"
             value={formData.email}
             onChange={handleChange}
-            variant="outlined"
+            sx={commonInputSx}
           />
           <TextField
-            required
-            fullWidth
+            size="small"
             label="Phone*"
             name="phone"
-            type="tel"
             value={formData.phone}
             onChange={handleChange}
-            variant="outlined"
+            sx={commonInputSx}
           />
         </FormRow>
 
-        <SectionTitle sx={{ mt: 5 }}>Object Details</SectionTitle>
+        <SectionTitle sx={{ mt: 4 }}>Object Details</SectionTitle>
+
         <FormRow
           sx={{
             gridTemplateColumns: {
@@ -189,7 +222,7 @@ const QuoteForm = () => {
             },
           }}
         >
-          <FormControl fullWidth variant="outlined">
+          <FormControl size="small" sx={commonInputSx}>
             <InputLabel>Parcel Type</InputLabel>
             <Select
               name="parcelType"
@@ -205,21 +238,21 @@ const QuoteForm = () => {
           </FormControl>
 
           <TextField
-            fullWidth
+            size="small"
             label="City of Departure"
             name="departureCity"
             value={formData.departureCity}
             onChange={handleChange}
-            variant="outlined"
+            sx={commonInputSx}
           />
 
           <TextField
-            fullWidth
+            size="small"
             label="Delivery City"
             name="deliveryCity"
             value={formData.deliveryCity}
             onChange={handleChange}
-            variant="outlined"
+            sx={commonInputSx}
           />
         </FormRow>
 
@@ -233,7 +266,7 @@ const QuoteForm = () => {
             },
           }}
         >
-          <FormControl fullWidth variant="outlined">
+          <FormControl size="small" sx={commonInputSx}>
             <InputLabel>Package</InputLabel>
             <Select
               name="packageType"
@@ -249,58 +282,48 @@ const QuoteForm = () => {
           </FormControl>
 
           <TextField
-            fullWidth
-            label="Weight (kg)"
+            size="small"
+            label="Weight"
             name="weight"
-            type="number"
             value={formData.weight}
             onChange={handleChange}
-            variant="outlined"
-            InputProps={{ inputProps: { min: 0, step: 0.1 } }}
+            sx={commonInputSx}
           />
-
           <TextField
-            fullWidth
-            label="Height (cm)"
+            size="small"
+            label="Height"
             name="height"
-            type="number"
             value={formData.height}
             onChange={handleChange}
-            variant="outlined"
-            InputProps={{ inputProps: { min: 0 } }}
+            sx={commonInputSx}
           />
-
           <TextField
-            fullWidth
-            label="Width (cm)"
+            size="small"
+            label="Width"
             name="width"
-            type="number"
             value={formData.width}
             onChange={handleChange}
-            variant="outlined"
-            InputProps={{ inputProps: { min: 0 } }}
+            sx={commonInputSx}
           />
-
           <TextField
-            fullWidth
-            label="Length (cm)"
+            size="small"
+            label="Length"
             name="length"
-            type="number"
             value={formData.length}
             onChange={handleChange}
-            variant="outlined"
-            InputProps={{ inputProps: { min: 0 } }}
+            sx={commonInputSx}
           />
         </FullRow>
 
-        <CheckboxGroup row>
+        <CheckboxGroup>
           <FormControlLabel
             control={
               <Checkbox
+                size="small"
                 checked={formData.delicate}
                 onChange={handleChange}
                 name="delicate"
-                sx={{ color: "#f59e0b", "&.Mui-checked": { color: "#f59e0b" } }}
+                sx={{ "&.Mui-checked": { color: "#f59e0b" } }}
               />
             }
             label="Delicate"
@@ -308,10 +331,11 @@ const QuoteForm = () => {
           <FormControlLabel
             control={
               <Checkbox
+                size="small"
                 checked={formData.instant}
                 onChange={handleChange}
                 name="instant"
-                sx={{ color: "#1976d2", "&.Mui-checked": { color: "#1976d2" } }}
+                sx={{ "&.Mui-checked": { color: "#2563eb" } }}
               />
             }
             label="Instant Delivery"
@@ -319,6 +343,7 @@ const QuoteForm = () => {
           <FormControlLabel
             control={
               <Checkbox
+                size="small"
                 checked={formData.insurance}
                 onChange={handleChange}
                 name="insurance"
@@ -329,29 +354,28 @@ const QuoteForm = () => {
           <FormControlLabel
             control={
               <Checkbox
+                size="small"
                 checked={formData.packaging}
                 onChange={handleChange}
                 name="packaging"
-                sx={{ color: "#f59e0b", "&.Mui-checked": { color: "#f59e0b" } }}
+                sx={{ "&.Mui-checked": { color: "#f59e0b" } }}
               />
             }
             label="Packaging"
           />
         </CheckboxGroup>
 
-        <SubmitButton type="submit" size="small" fullWidth>
-          Request A Quote
-        </SubmitButton>
+        <SubmitButton type="submit">Request A Quote</SubmitButton>
       </FormWrapper>
 
-      {/* Courier Image - visible only on large screens */}
-      <ImageContainer>
+      {/* IMAGE */}
+      <ImageContainer sx={{ display: { xs: "none", lg: "block" } }}>
         <ImageBox>
           <img
             src="images/form-img.png"
-            alt="Happy courier with clipboard"
+            alt="Courier"
             style={{
-              width: "80%",
+              width: "70%",
               height: "100%",
               objectFit: "contain",
               objectPosition: "bottom right",
