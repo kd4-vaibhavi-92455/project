@@ -47,7 +47,7 @@ const MovingProceduresUI = () => {
             color: "#111827",
           }}
         >
-          Safe Moving <span style={{ fontWeight: 800 }}>Procedures.</span>
+          Safe Moving <span style={{ fontWeight: 800 }}>Procedures</span>
         </Typography>
       </Box>
 
