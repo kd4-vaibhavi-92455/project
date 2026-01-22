@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import HomeIcon from "@mui/icons-material/Home";
 
 import {
   TextField,
@@ -30,6 +31,7 @@ import {
   AssignmentOutlined, // For Booking Details
   HistoryOutlined, // For Past Bookings
 } from "@mui/icons-material";
+import { useNavigate } from "react-router";
 
 const CustomerDashboard = () => {
   const [user, setUser] = useState(null);
@@ -42,6 +44,8 @@ const CustomerDashboard = () => {
     const loggedInUser = localStorage.getItem("customer_user");
     if (loggedInUser) setUser(JSON.parse(loggedInUser));
   }, []);
+
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -118,12 +122,14 @@ const CustomerDashboard = () => {
       <div className="max-w-5xl mx-auto space-y-6">
         {/* Top Header / Breadcrumb Box */}
         <Paper className="p-4 flex justify-between items-center shadow-sm rounded-xl">
-          <a
-            href="#"
-            className="font-bold text-gray-700 hover:text-blue-900 no-underline transition-colors cursor-pointer"
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            className="flex items-center gap-2 px-3 py-2 rounded-full text-brand-primary hover:bg-brand-primary/10 transition-all text-[#1171BA] hover:text-[#0D3B66] hover:cursor-pointer"
           >
-            User Profile
-          </a>
+            <HomeIcon sx={{ fontSize: 24 }} />
+            <span className="font-semibold ">Home</span>
+          </button>
 
           <div className="flex items-center gap-2 text-sm text-gray-400">
             <IconButton
