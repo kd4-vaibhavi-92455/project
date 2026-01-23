@@ -86,6 +86,24 @@ const Footer = () => {
             <li>Home</li>
             <li>Office</li>
             <li>Vehicle</li>
+            <li>
+  <a
+    href="/register-driver"
+    className="
+      cursor-pointer 
+      text-blue
+      font-bold 
+      inline-flex 
+      items-center 
+      transition-all 
+      duration-300 
+      hover:text-[#1171ba] 
+      decoration-2 
+    "
+  >
+    Register as a Driver
+  </a>
+</li>
           </ul>
         </div>
 
@@ -112,7 +130,7 @@ const Footer = () => {
 
       {/* COPYRIGHT */}
       <div className="border-t border-black/20 py-6 text-center text-sm text-black-1000">
-        Copyright © 2026 Packers-Movers. All rights reserved.
+        Copyright © 2026 Packers-Movers. All rights reserved. | Privacy Policy | Terms & Conditions
       </div>
     </footer>
   );
