@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import BookingTable from './BookingTable';
+import HomeIcon from "@mui/icons-material/Home";
+
 import {
   TextField,
   Button,
@@ -26,6 +28,7 @@ import {
   AssignmentOutlined,
   HistoryOutlined,
 } from "@mui/icons-material";
+import { useNavigate } from "react-router";
 
 // --- Data Arrays ---
 const activeBookingsData = [
@@ -52,6 +55,8 @@ const CustomerDashboard = () => {
     if (loggedInUser) setUser(JSON.parse(loggedInUser));
   }, []);
 
+  const navigate = useNavigate();
+
   const handleLogin = (e) => {
     e.preventDefault();
     if (email && password) {
@@ -68,6 +73,7 @@ const CustomerDashboard = () => {
 
   if (!user) {
     return (
+<<<<<<< HEAD
       <div className="flex items-center justify-center min-h-screen bg-slate-50 p-4">
         <Box className="w-full max-w-md bg-white p-10 shadow-xl rounded-xl border border-gray-100">
           <div className="text-center mb-6">
@@ -78,17 +84,99 @@ const CustomerDashboard = () => {
             <TextField fullWidth label="Email Address" onChange={(e) => setEmail(e.target.value)} />
             <TextField fullWidth label="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
             <Button fullWidth variant="contained" type="submit" sx={{ bgcolor: "#6366f1", py: 1.5, fontWeight: 'bold' }}>
+=======
+      <div
+        className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center relative"
+        style={{
+          backgroundImage: "url('/src/assets/images/login-bg.png')",
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gray-300/60" />
+
+        {/* Login Card */}
+        <Box
+          className="relative w-full max-w-md bg-white p-10 shadow-xl rounded-xl border border-gray-100 z-10"
+          sx={{ width: 400 }}
+        >
+          <div className="text-center mb-4">
+            <h2 className="text-3xl font-bold text-gray-800">User Login</h2>
+            <p className="text-gray-500 mt-2">Access your shipping dashboard</p>
+          </div>
+
+          <form onSubmit={handleLogin}>
+            <div className="mb-3">
+              <TextField
+                fullWidth
+                label="Email Address"
+                onChange={(e) => setEmail(e.target.value)}
+                size="small"
+                sx={{
+                  "& .MuiOutlinedInput-root.Mui-focused fieldset": {
+                    borderColor: "#6366f1",
+                  },
+                }}
+              />
+            </div>
+            <div className="mb-4">
+              <TextField
+                fullWidth
+                label="Password"
+                type="password"
+                size="small"
+                onChange={(e) => setPassword(e.target.value)}
+                sx={{
+                  "& .MuiOutlinedInput-root.Mui-focused fieldset": {
+                    borderColor: "#6366f1",
+                  },
+                }}
+              />
+            </div>
+
+            <Button
+              fullWidth
+              type="submit"
+              className="py-4 font-bold transition-all"
+              sx={{
+                color: "#ffffff",
+                backgroundColor: "#0D3B66",
+                "&:hover": {
+                  backgroundColor: "#0D3B66",
+                },
+              }}
+            >
+>>>>>>> vaibhavi
               LOGIN
             </Button>
+            <p className="text-center mt-4 text-[#0D3B66] underline decoration-yellow-400 decoration-2 hover:decoration-yellow-500 cursor-pointer">
+              <a href="/">Back to the website</a>
+            </p>
           </form>
         </Box>
       </div>
     );
   }
+<<<<<<< HEAD
 
+=======
+  // --- DASHBOARD VIEW (Based on Image) ---
+>>>>>>> vaibhavi
   return (
     <div className="min-h-screen bg-[#f4f7fe] p-4 md:p-8">
       <div className="max-w-5xl mx-auto space-y-6">
+<<<<<<< HEAD
+=======
+        {/* Top Header / Breadcrumb Box */}
+        <Paper className="p-4 flex justify-between items-center shadow-sm rounded-xl">
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            className="flex items-center gap-2 px-3 py-2 rounded-full text-brand-primary hover:bg-brand-primary/10 transition-all text-[#1171BA] hover:text-[#0D3B66] hover:cursor-pointer"
+          >
+            <HomeIcon sx={{ fontSize: 24 }} />
+            <span className="font-semibold ">Home</span>
+          </button>
+>>>>>>> vaibhavi
 
         {/* Header */}
         <Paper className="p-4 flex justify-between items-center shadow-sm rounded-xl">

@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-blue-50 to-blue-100 text-slate-900">
+    <footer className="bg-gradient-to-b from-[#F2F2F2] to-blue-100 text-slate-900">
       {/* TOP INFO BAR */}
       <div className="border-b border-black/20">
         <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -24,7 +24,7 @@ const Footer = () => {
             { icon: <Email />, title: "E-mail:", value: "info@demolink.org" },
           ].map((item, i) => (
             <div key={i} className="flex items-center gap-5">
-              <div className="w-14 h-14 rounded-full bg-blue-400 flex items-center justify-center text-black">
+              <div className="w-14 h-14 rounded-full border-2 border-[#0D3B66] bg-[#F2F2F2] flex items-center justify-center text-black">
                 {item.icon}
               </div>
               <div>
