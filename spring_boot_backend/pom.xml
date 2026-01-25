@@ -82,6 +82,11 @@
 			<artifactId>modelmapper</artifactId>
 			<version>3.2.5</version>
 		</dependency>
+		<!-- For Java 8+ Date/Time (LocalDate, LocalDateTime) JSON support -->
+		<dependency>
+		  <groupId>com.fasterxml.jackson.datatype</groupId>
+		  <artifactId>jackson-datatype-jsr310</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
