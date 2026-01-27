@@ -8,8 +8,10 @@ import Home from "./pages/Home";
 import PublicLayout from "./layouts/PublicLayout";
 import About from "./pages/About";
 import Footer from "./components/common/Footer";
-import CustomerDashboard from "./modules/customer/CustomerDashboard";
+// import CustomerDashboard from "./modules/customer/CustomerDashboard";
 import AuthProvider from "./providers/AuthProvider";
+import Login from './modules/customer/Login';
+import Dashboard from './modules/customer/Dashboard';
 
 function App() {
   return (
@@ -26,7 +28,11 @@ function App() {
             {/* <Route path="contact" element={<Contact />} /> */}
             {/* <Route path="services" element={<Services />} /> */}
           </Route>
-          <Route path="/customer" element={<CustomerDashboard />} />
+          {/* <Route path="/customer" element={<CustomerDashboard />} /> */}
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+
+
           {/* user layout */}
           {/* <Route path="/user">
           <Route index element={<Navbar />} />
