@@ -24,7 +24,7 @@ const HeroSection = () => {
         </p>
 
         <button className="mt-8 w-fit rounded-lg bg-brand-accent px-6 py-3 font-semibold text-white shadow-professional hover:bg-orange-600 transition">
-          Get a Free Quote
+          Get a Free Quote now
         </button>
       </div>
     </div>
