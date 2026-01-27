@@ -51,16 +51,15 @@ public class UserController {
         
         Authentication authenticatedDetails = authManager.authenticate(authToken);
         
-        // 2. Get Principal (Dhyan dein: Yahan UserPrincipal cast karein)
         UserPrincipal principal = (UserPrincipal) authenticatedDetails.getPrincipal();
         
         // 3. Generate Token
         String jwtToken = jwtUtils.generateToken(principal);
         
-        // 4. Return AuthResponse (4 parameters pass karein jo aapne DTO mein banaye hain)
+        // 4. Return AuthResponse 
         return ResponseEntity.ok(new AuthResponse(
                 jwtToken,                  // jwt
-                principal.getUsername(),        // name (principal se nikalna hoga)
+                principal.getUsername(),        // name 
                 principal.getRoleName(), // role
                 "Successful Login"          // message
         ));
