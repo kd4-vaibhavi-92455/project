@@ -1,3 +1,10 @@
+const scrollToQuoteForm = () => {
+  const element = document.getElementById("quote");
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
 const HeroSection = () => {
   return (
     <div className="relative h-[600px] w-full">
@@ -23,7 +30,8 @@ const HeroSection = () => {
           combine precision handling with absolute reliability…
         </p>
 
-        <button className="mt-8 w-fit rounded-lg bg-brand-accent px-6 py-3 font-semibold text-white shadow-professional hover:bg-orange-600 transition">
+        <button onClick={scrollToQuoteForm}
+          className="mt-8 w-fit rounded-lg bg-[#1171BA] px-6 py-3 font-semibold text-white shadow-professional hover:bg-[#0A3D7A] transition">
           Get a Free Quote now
         </button>
       </div>
