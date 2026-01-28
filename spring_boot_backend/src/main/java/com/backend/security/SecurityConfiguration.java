@@ -17,6 +17,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.*;
+
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import java.util.List;
+
+
 @Configuration // To declare a java config class (equivalent to bean config xml file)
 @EnableWebSecurity // to enable spring security
 @EnableMethodSecurity // optional to add method level authorization rules
@@ -41,9 +48,14 @@ public class SecurityConfiguration {
 	    log.info("******** Configuring Packers and Movers Security with Driver, Helper, Manager roles *******");
 
 	    // CSRF aur Session management ko stateless (JWT) set karna
-	    http.csrf(csrf -> csrf.disable())
-	        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+//	    http.csrf(csrf -> csrf.disable())
+//	        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
+	    http
+	    .cors(Customizer.withDefaults())   // ⭐⭐⭐ THIS LINE FIXES BROWSER ISSUE
+	    .csrf(csrf -> csrf.disable())
+	    .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+	    
 	    http.authorizeHttpRequests(request ->
 	        request
 	            // 1. PUBLIC ENDPOINTS: Sabke liye khule hain
@@ -55,7 +67,7 @@ public class SecurityConfiguration {
 	                "/users/locations/**"      // Location APIs for state/city dropdown
 	               // "/staff/register-driver" // Driver registration link
 	            ).permitAll()
-
+	            .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 	            // 2. MANAGER ONLY: Manager poore operation ko dekh sakta hai
 	            .requestMatchers("/api/admin/**").hasRole("ADMIN")
 	            .requestMatchers("/api/bookings/all").hasRole("STAFF")
@@ -87,5 +99,19 @@ public class SecurityConfiguration {
 	@Bean
 	AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
 		return config.getAuthenticationManager();
+	}
+	
+	@Bean
+	public CorsConfigurationSource corsConfigurationSource() {
+	    CorsConfiguration config = new CorsConfiguration();
+
+	    config.setAllowedOrigins(List.of("http://localhost:5173"));
+	    config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+	    config.setAllowedHeaders(List.of("*"));
+	    config.setAllowCredentials(true);
+
+	    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	    source.registerCorsConfiguration("/**", config);
+	    return source;
 	}
 }

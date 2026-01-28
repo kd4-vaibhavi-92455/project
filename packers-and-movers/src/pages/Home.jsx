@@ -13,7 +13,7 @@ const Home = () => {
       <MovingProceduresUI />
 
       {/* Wrapper */}
-      <div className="relative 2xl:mb-[300px] mb-0">
+      <div className="relative 2xl:mb-[420px] mb-0">
         <WeFocusQuality />
 
         {/* Quote Form */}
@@ -22,7 +22,7 @@ const Home = () => {
             static
             2xl:absolute
             2xl:left-1/2
-            2xl:top-[110%]
+            2xl:top-[140%]
             2xl:w-full
             2xl:-translate-x-1/2
             2xl:-translate-y-1/2
@@ -35,7 +35,7 @@ const Home = () => {
           </Container>
         </div>
       </div>
-
+      {/* <QuoteForm /> */}
       <ServicesSection />
     </div>
   );
