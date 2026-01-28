@@ -103,7 +103,7 @@ const SubmitButton = styled(Button)({
 /* ===============================
    COMPONENT
 ================================ */
-const QuoteForm = () => {
+const BookAMoveForm = () => {
   const [formData, setFormData] = useState({
     serviceCategory: "",
     pickupLabel: "",
@@ -297,4 +297,4 @@ const QuoteForm = () => {
   );
 };
 
-export default QuoteForm;
+export default BookAMoveForm;
