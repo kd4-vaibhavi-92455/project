@@ -15,6 +15,7 @@ const iconMap = {
 const MovingProceduresUI = () => {
   return (
     <Box
+      id="process"
       className="w-full py-20"
       sx={{
         display: "flex",

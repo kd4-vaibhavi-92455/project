@@ -32,7 +32,7 @@ const servicesData = [
 
 const ServicesSection = () => {
   return (
-    <section className="bg-[#F2F2F2] py-20">
+    <section id="services" className="bg-[#F2F2F2] py-20">
       <div className="max-w-7xl mx-auto px-15">
         {/* Header */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
