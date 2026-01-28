@@ -12,8 +12,12 @@ import Login from "./modules/auth/Login";
 // import UserLayout from "./layouts/UserLayout";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import PageNotFound from "./pages/PageNotFound";
+import { useLocation } from 'react-router';
+//const excludedPaths = ["/footer"];
+
 
 function App() {
+  const location = useLocation();
   return (
     <ThemeProvider>
       <AuthProvider>
@@ -53,7 +57,7 @@ function App() {
           />
           {/* </Route> */}
 
-          <Route path="*" element={<PageNotFound />} />
+          <Route path="/not-found" element={<PageNotFound />} />
 
           {/* user layout */}
           {/* <Route path="/user">

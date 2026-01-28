@@ -156,6 +156,7 @@ const QuoteForm = () => {
   return (
     <>
       <MainContainer
+        id="quote"
         component="form"
         sx={{
           flexDirection: { xs: "column", lg: "row" },

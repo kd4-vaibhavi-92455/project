@@ -15,13 +15,13 @@ const Footer = () => {
       <div className="border-b border-black/20">
         <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
-            { icon: <Phone />, title: "Phone:", value: "(719) 445-2808" },
+            { icon: <Phone />, title: "Phone:", value: "+91 8989682154" },
             {
               icon: <LocationOn />,
               title: "Address:",
-              value: "4578 Pune Road",
+              value: "Packers & Movers, Karad",
             },
-            { icon: <Email />, title: "E-mail:", value: "info@demolink.org" },
+            { icon: <Email />, title: "E-mail:", value: "support@smoove.com" },
           ].map((item, i) => (
             <div key={i} className="flex items-center gap-5">
               <div className="w-14 h-14 rounded-full border-2 border-[#0D3B66] bg-[#F2F2F2] flex items-center justify-center text-black">
@@ -87,23 +87,16 @@ const Footer = () => {
             <li>Office</li>
             <li>Vehicle</li>
             <li>
-  <a
-    href="/register-driver"
-    className="
-      cursor-pointer 
-      text-blue
-      font-bold 
-      inline-flex 
-      items-center 
-      transition-all 
-      duration-300 
-      hover:text-[#1171ba] 
-      decoration-2 
-    "
-  >
-    Register as a Driver
-  </a>
-</li>
+              <a href="#" onClick={(e) => { e.preventDefault(); alert("Coming soon..."); }}
+                className=" 
+                cursor-pointer 
+                text-blue 
+                font-bold 
+                inline-flex 
+                items-center 
+                hover:text-[#1171ba] " > Register as a Driver </a>
+
+            </li>
           </ul>
         </div>
 
@@ -132,7 +125,7 @@ const Footer = () => {
       <div className="border-t border-black/20 py-6 text-center text-sm text-black-1000">
         Copyright © 2026 Packers-Movers. All rights reserved. | Privacy Policy | Terms & Conditions
       </div>
-    </footer>
+    </footer >
   );
 };
 
