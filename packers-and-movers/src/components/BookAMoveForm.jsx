@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -11,8 +11,10 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { createBooking } from "../services/booking";
+import { getStates, getCitiesByState } from "../services/location";
+
 /* ===============================
-   COMMON INPUT STYLES (UNCHANGED)
+   COMMON INPUT STYLES
 ================================ */
 const commonInputSx = {
   "& .MuiOutlinedInput-root": {
@@ -38,7 +40,7 @@ const commonInputSx = {
 };
 
 /* ===============================
-   LAYOUT STYLES (UNCHANGED)
+   LAYOUT STYLES
 ================================ */
 const MainContainer = styled(Box)({
   display: "flex",
@@ -48,21 +50,6 @@ const MainContainer = styled(Box)({
 
 const FormWrapper = styled(Box)({
   flex: 1,
-});
-
-const ImageContainer = styled(Box)({
-  width: "420px",
-  flexShrink: 0,
-  display: "block",
-  position: "relative",
-});
-
-const ImageBox = styled(Box)({
-  position: "absolute",
-  bottom: 0,
-  right: 0,
-  width: "100%",
-  height: "100%",
 });
 
 const SectionTitle = styled(Typography)({
@@ -75,13 +62,6 @@ const SectionTitle = styled(Typography)({
 const FormRow = styled(Box)({
   display: "grid",
   gridTemplateColumns: "repeat(3, 1fr)",
-  gap: "20px",
-  marginBottom: "20px",
-});
-
-const FullRow = styled(Box)({
-  display: "grid",
-  gridTemplateColumns: "repeat(5, 1fr)",
   gap: "20px",
   marginBottom: "20px",
 });
@@ -104,6 +84,12 @@ const SubmitButton = styled(Button)({
    COMPONENT
 ================================ */
 const BookAMoveForm = ({ onClose }) => {
+  /* ---------- API DATA STATES ---------- */
+  const [states, setStates] = useState([]);
+  const [pickupCities, setPickupCities] = useState([]);
+  const [dropCities, setDropCities] = useState([]);
+
+  /* ---------- FORM STATE ---------- */
   const [formData, setFormData] = useState({
     serviceCategory: "",
     pickupLabel: "",
@@ -117,48 +103,73 @@ const BookAMoveForm = ({ onClose }) => {
     dropCity: "",
     dropPincode: "",
     moveDate: "",
-    estimatedPrice: "",
   });
 
+  /* ---------- FETCH STATES ---------- */
+  useEffect(() => {
+    getStates()
+      .then((res) => setStates(res))
+      .catch((err) => console.error("State fetch failed", err));
+  }, []);
+
+  /* ---------- COMMON CHANGE ---------- */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((p) => ({ ...p, [name]: value }));
   };
 
+  /* ---------- PICKUP STATE ---------- */
+  const handlePickupStateChange = async (e) => {
+    const state = e.target.value;
+
+    setFormData((p) => ({
+      ...p,
+      pickupState: state,
+      pickupCity: "",
+    }));
+
+    try {
+      const cities = await getCitiesByState(state);
+      setPickupCities(cities);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  /* ---------- DROP STATE ---------- */
+  const handleDropStateChange = async (e) => {
+    const state = e.target.value;
+
+    setFormData((p) => ({
+      ...p,
+      dropState: state,
+      dropCity: "",
+    }));
+
+    try {
+      const cities = await getCitiesByState(state);
+      setDropCities(cities);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  /* ---------- SUBMIT ---------- */
   const handleSubmit = async (e) => {
-    alert("clicked");
     e.preventDefault();
-    console.log("form data: ", formData);
+
     const payload = {
       ...formData,
       estimatedPrice: 40000,
     };
 
     try {
-      const res = await createBooking(payload);
-      console.log("Booking success:", res);
-
-      alert("Booking created successfully !");
-
-      setFormData({
-        serviceCategory: "",
-        pickupLabel: "",
-        pickupAddressLine: "",
-        pickupState: "",
-        pickupCity: "",
-        pickupPincode: "",
-        dropLabel: "",
-        dropAddressLine: "",
-        dropState: "",
-        dropCity: "",
-        dropPincode: "",
-        moveDate: "",
-        estimatedPrice: "",
-      });
-      onClose();
+      await createBooking(payload);
+      alert("Booking created successfully!");
+      onClose?.();
     } catch (err) {
       console.error("Booking failed:", err);
-      alert("Something went wrong !");
+      alert("Something went wrong!");
     }
   };
 
@@ -166,18 +177,9 @@ const BookAMoveForm = ({ onClose }) => {
     <MainContainer
       component="form"
       onSubmit={handleSubmit}
-      sx={{
-        flexDirection: { xs: "column", lg: "row" },
-        px: { xs: 1, sm: 2, lg: 0 },
-      }}
+      sx={{ flexDirection: { xs: "column", lg: "row" } }}
     >
-      {/* ================= FORM ================= */}
-      <FormWrapper
-        sx={{
-          px: { xs: 2, sm: 3, md: 4 },
-          py: { xs: 3, sm: 4 },
-        }}
-      >
+      <FormWrapper sx={{ px: 4, py: 4 }}>
         {/* SERVICE */}
         <SectionTitle>Service Details and Schedule</SectionTitle>
         <FormRow>
@@ -194,11 +196,12 @@ const BookAMoveForm = ({ onClose }) => {
               <MenuItem value="OFFICE">Office</MenuItem>
             </Select>
           </FormControl>
+
           <TextField
             type="date"
             label="Move Date"
-            InputLabelProps={{ shrink: true }}
             name="moveDate"
+            InputLabelProps={{ shrink: true }}
             value={formData.moveDate}
             onChange={handleChange}
             sx={commonInputSx}
@@ -215,19 +218,27 @@ const BookAMoveForm = ({ onClose }) => {
             onChange={handleChange}
             sx={commonInputSx}
           />
+
           <FormControl size="small" sx={commonInputSx}>
             <InputLabel>State</InputLabel>
             <Select
-              name="pickupState"
               value={formData.pickupState}
               label="State"
-              onChange={handleChange}
+              onChange={handlePickupStateChange}
             >
-              <MenuItem value="Maharashtra">Maharashtra</MenuItem>
-              <MenuItem value="Madhya Pradesh">Madhya Pradesh</MenuItem>
+              {states.map((s) => (
+                <MenuItem key={s} value={s}>
+                  {s}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
-          <FormControl size="small" sx={commonInputSx}>
+
+          <FormControl
+            size="small"
+            sx={commonInputSx}
+            disabled={!pickupCities.length}
+          >
             <InputLabel>City</InputLabel>
             <Select
               name="pickupCity"
@@ -235,9 +246,11 @@ const BookAMoveForm = ({ onClose }) => {
               label="City"
               onChange={handleChange}
             >
-              <MenuItem value="Pune">Pune</MenuItem>
-              <MenuItem value="Mumbai">Mumbai</MenuItem>
-              <MenuItem value="Nagpur">Nagpur</MenuItem>
+              {pickupCities.map((c) => (
+                <MenuItem key={c} value={c}>
+                  {c}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </FormRow>
@@ -250,13 +263,14 @@ const BookAMoveForm = ({ onClose }) => {
             onChange={handleChange}
             sx={commonInputSx}
           />
+
           <TextField
             fullWidth
             label="Pickup Address"
             name="pickupAddressLine"
             value={formData.pickupAddressLine}
             onChange={handleChange}
-            sx={{ ...commonInputSx, mb: 3 }}
+            sx={commonInputSx}
           />
         </FormRow>
 
@@ -270,18 +284,27 @@ const BookAMoveForm = ({ onClose }) => {
             onChange={handleChange}
             sx={commonInputSx}
           />
+
           <FormControl size="small" sx={commonInputSx}>
             <InputLabel>State</InputLabel>
             <Select
-              name="dropState"
               value={formData.dropState}
               label="State"
-              onChange={handleChange}
+              onChange={handleDropStateChange}
             >
-              <MenuItem value="Madhya Pradesh">Madhya Pradesh</MenuItem>
+              {states.map((s) => (
+                <MenuItem key={s} value={s}>
+                  {s}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
-          <FormControl size="small" sx={commonInputSx}>
+
+          <FormControl
+            size="small"
+            sx={commonInputSx}
+            disabled={!dropCities.length}
+          >
             <InputLabel>City</InputLabel>
             <Select
               name="dropCity"
@@ -289,8 +312,11 @@ const BookAMoveForm = ({ onClose }) => {
               label="City"
               onChange={handleChange}
             >
-              <MenuItem value="Bhopal">Bhopal</MenuItem>
-              <MenuItem value="Indore">Indore</MenuItem>
+              {dropCities.map((c) => (
+                <MenuItem key={c} value={c}>
+                  {c}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </FormRow>
@@ -303,22 +329,18 @@ const BookAMoveForm = ({ onClose }) => {
             onChange={handleChange}
             sx={commonInputSx}
           />
+
           <TextField
             fullWidth
             label="Drop Address"
             name="dropAddressLine"
             value={formData.dropAddressLine}
             onChange={handleChange}
-            sx={{ ...commonInputSx, mb: 3 }}
+            sx={commonInputSx}
           />
         </FormRow>
 
-        <SubmitButton
-          type="submit"
-          // onClick={() => handleSubmit()}
-        >
-          Book now
-        </SubmitButton>
+        <SubmitButton type="submit">Book Now</SubmitButton>
       </FormWrapper>
     </MainContainer>
   );
