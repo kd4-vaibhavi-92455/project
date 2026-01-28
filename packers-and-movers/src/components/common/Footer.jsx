@@ -50,15 +50,24 @@ const Footer = () => {
           </p>
 
           <div className="flex gap-4">
-            {[Facebook, Twitter, LinkedIn, Instagram].map((Icon, i) => (
-              <div
+            {[
+              { Icon: Facebook, url: "https://www.facebook.com" },
+              { Icon: Twitter, url: "https://www.twitter.com" },
+              { Icon: LinkedIn, url: "https://www.linkedin.com" },
+              { Icon: Instagram, url: "https://www.instagram.com" },
+            ].map(({ Icon, url }, i) => (
+              <a
                 key={i}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full border border-white/30 flex items-center justify-center hover:bg-yellow-400 hover:text-black transition"
               >
                 <Icon fontSize="small" />
-              </div>
+              </a>
             ))}
           </div>
+
         </div>
 
         {/* QUICK LINKS */}
@@ -71,8 +80,8 @@ const Footer = () => {
             <li>About Us</li>
             <li>Our Services</li>
             <li>Get In Touch</li>
-            <li>Pay Now</li>
-            <li>FAQ</li>
+            {/* <li>Pay Now</li>
+            <li>FAQ</li> */}
           </ul>
         </div>
 
