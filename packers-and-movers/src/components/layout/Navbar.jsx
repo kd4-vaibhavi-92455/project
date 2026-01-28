@@ -6,7 +6,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { useNavigate } from "react-router";
-import { useAuth } from './../../providers/AuthProvider';
+import { useAuth } from "./../../providers/AuthProvider";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,7 +33,7 @@ const Navbar = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-500 ${
         isScrolled ? "bg-white py-3 shadow-md" : "bg-transparent py-6"
-        }`}
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
@@ -42,7 +42,7 @@ const Navbar = () => {
             <span
               className={`text-2xl font-bold transition-colors ${
                 isScrolled ? "text-[#0D3B66]" : "text-white"
-                }`}
+              }`}
             >
               <img src="/images/logo.png" width="100px" />
               {/* LOGI<span className="text-[#1171BA]">MOVE</span> */}
@@ -57,7 +57,7 @@ const Navbar = () => {
                 href={link.href}
                 className={`text-sm font-medium transition-colors hover:text-[#1171BA] ${
                   isScrolled ? "text-gray-900" : "text-gray/700"
-                  }`}
+                }`}
               >
                 {link.name}
               </a>
@@ -69,24 +69,23 @@ const Navbar = () => {
               Get Quote
             </button>
 
-            {user ?
-              (
-                <button
-                  onClick={() => navigate("/customer")}
-                  className="flex items-center gap-2 text-[#1171BA] hover:text-[#0D3B66] px-5 py-2 rounded border-2 border-[#1171BA] hover:border-[#0D3B66] font-bold transition-all active:scale-95"
-                >
-                  <DashboardIcon sx={{ fontSize: 18 }} />
-              Track shipment
-                </button>
-              ) : (
-                <button
-                  onClick={() => navigate("/customer")}
-                  className="flex items-center gap-2 text-[#1171BA] hover:text-[#0D3B66] px-5 py-2 rounded border-2 border-[#1171BA] hover:border-[#0D3B66] font-bold transition-all active:scale-95"
-                >
-                  <DashboardIcon sx={{ fontSize: 18 }} />
-              Login
-                </button>
-              )}
+            {user ? (
+              <button
+                onClick={() => navigate("/dashboard")}
+                className="flex items-center gap-2 text-[#1171BA] hover:text-[#0D3B66] px-5 py-2 rounded border-2 border-[#1171BA] hover:border-[#0D3B66] font-bold transition-all active:scale-95"
+              >
+                <DashboardIcon sx={{ fontSize: 18 }} />
+                Track shipment
+              </button>
+            ) : (
+              <button
+                onClick={() => navigate("/login")}
+                className="flex items-center gap-2 text-[#1171BA] hover:text-[#0D3B66] px-5 py-2 rounded border-2 border-[#1171BA] hover:border-[#0D3B66] font-bold transition-all active:scale-95"
+              >
+                <DashboardIcon sx={{ fontSize: 18 }} />
+                Login
+              </button>
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}

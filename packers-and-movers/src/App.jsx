@@ -10,8 +10,8 @@ import About from "./pages/About";
 import Footer from "./components/common/Footer";
 // import CustomerDashboard from "./modules/customer/CustomerDashboard";
 import AuthProvider from "./providers/AuthProvider";
-import Login from './modules/customer/Login';
-import Dashboard from './modules/customer/Dashboard';
+import Login from "./modules/customer/Login";
+import Dashboard from "./modules/customer/Dashboard";
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
           {/* visitor layout */}
           <Route path="/" element={<PublicLayout />}>
             <Route path="/" index element={<Home />} />
+            <Route path="/home" index element={<Home />} />
             <Route path="/about" element={<About />} />
 
             <Route path="/footer" element={<Footer />} />
@@ -31,7 +32,6 @@ function App() {
           {/* <Route path="/customer" element={<CustomerDashboard />} /> */}
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
-
 
           {/* user layout */}
           {/* <Route path="/user">
