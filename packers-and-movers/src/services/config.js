@@ -1,5 +1,4 @@
-
-export const BASE_URL = "http://localhost:4000";
+export const BASE_URL = "http://localhost:8080";
 
 export function getAuthHeader() {
   const token = sessionStorage.getItem("token");

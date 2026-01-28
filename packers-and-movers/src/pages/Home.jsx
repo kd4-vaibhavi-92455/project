@@ -13,7 +13,7 @@ const Home = () => {
       <MovingProceduresUI />
 
       {/* Wrapper */}
-      <div className="relative 2xl:mb-[420px] mb-0">
+      <div className="relative 2xl:mb-[550px] mb-0">
         <WeFocusQuality />
 
         {/* Quote Form */}

@@ -1,24 +1,34 @@
-import { useContext } from "react";
-import { useState } from "react";
-import { createContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-// step 1: create empty context
-export const AuthContext = createContext({});
+export const AuthContext = createContext(null);
 
-// step 2: context provider to provide context to all its children
-function AuthProvider(props) {
-  const [user, setUser] = useState();
+function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const storedUser = sessionStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+    setLoading(false);
+  }, []);
+
+  const logout = () => {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user");
+    setUser(null);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
-      {props.children}
+    <AuthContext.Provider value={{ user, setUser, loading, logout }}>
+      {!loading && children}
     </AuthContext.Provider>
   );
 }
 
-export default AuthProvider;
-
-// step 3: use the context wherever required (custom hook)
 export function useAuth() {
-  const auth = useContext(AuthContext);
-  return auth;
+  return useContext(AuthContext);
 }
+
+export default AuthProvider;

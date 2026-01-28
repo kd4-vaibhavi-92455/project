@@ -1,10 +1,8 @@
 import { Outlet } from "react-router";
-import Navbar from "../components/layout/Navbar";
 
 function UserLayout() {
   return (
     <div>
-     
       <Outlet />
     </div>
   );

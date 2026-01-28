@@ -25,7 +25,7 @@ import {
   HistoryOutlined,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router";
-
+import { useAuth } from "../../providers/AuthProvider";
 /* ---------------- DUMMY DATA ---------------- */
 
 const activeBookingsData = [
@@ -75,11 +75,12 @@ const pastBookingsData = [
 ];
 
 /* ---------------- COMPONENT ---------------- */
-
+console.log("hello dash board");
+// console.log("user details in session storedUser", user);
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState(0);
-
-  const user = {
+  const { user, logout } = useAuth();
+  const my_user = {
     name: "Mathew Anderson",
     email: "mathew@gmail.com",
   };
@@ -117,7 +118,7 @@ const Dashboard = () => {
                   className="border-4 border-white shadow-lg mx-auto"
                 />
                 <Typography variant="h6" fontWeight="bold" mt={1}>
-                  {user.name}
+                  {user?.name}
                 </Typography>
               </div>
 
@@ -179,7 +180,7 @@ const Dashboard = () => {
 
             <Typography className="flex items-center gap-2 text-gray-600">
               <Email fontSize="small" />
-              {user.email}
+              {user?.email}
             </Typography>
           </Card>
 
