@@ -212,6 +212,7 @@ const Dashboard = () => {
       {/* dialog */}
       <BookMoveDialog
         open={openBookDialog}
+        setOpenBookDialog={setOpenBookDialog}
         onClose={() => setOpenBookDialog(false)}
       />
     </div>

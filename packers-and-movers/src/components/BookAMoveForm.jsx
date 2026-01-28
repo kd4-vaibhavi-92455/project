@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-
+import { createBooking } from "../services/booking";
 /* ===============================
    COMMON INPUT STYLES (UNCHANGED)
 ================================ */
@@ -103,7 +103,7 @@ const SubmitButton = styled(Button)({
 /* ===============================
    COMPONENT
 ================================ */
-const BookAMoveForm = () => {
+const BookAMoveForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
     serviceCategory: "",
     pickupLabel: "",
@@ -125,9 +125,47 @@ const BookAMoveForm = () => {
     setFormData((p) => ({ ...p, [name]: value }));
   };
 
+  const handleSubmit = async (e) => {
+    alert("clicked");
+    e.preventDefault();
+    console.log("form data: ", formData);
+    const payload = {
+      ...formData,
+      estimatedPrice: 40000,
+    };
+
+    try {
+      const res = await createBooking(payload);
+      console.log("Booking success:", res);
+
+      alert("Booking created successfully !");
+
+      setFormData({
+        serviceCategory: "",
+        pickupLabel: "",
+        pickupAddressLine: "",
+        pickupState: "",
+        pickupCity: "",
+        pickupPincode: "",
+        dropLabel: "",
+        dropAddressLine: "",
+        dropState: "",
+        dropCity: "",
+        dropPincode: "",
+        moveDate: "",
+        estimatedPrice: "",
+      });
+      onClose();
+    } catch (err) {
+      console.error("Booking failed:", err);
+      alert("Something went wrong !");
+    }
+  };
+
   return (
     <MainContainer
       component="form"
+      onSubmit={handleSubmit}
       sx={{
         flexDirection: { xs: "column", lg: "row" },
         px: { xs: 1, sm: 2, lg: 0 },
@@ -275,24 +313,13 @@ const BookAMoveForm = () => {
           />
         </FormRow>
 
-        <SubmitButton type="submit">Calculate Moving Cost</SubmitButton>
+        <SubmitButton
+          type="submit"
+          // onClick={() => handleSubmit()}
+        >
+          Book now
+        </SubmitButton>
       </FormWrapper>
-
-      {/* ================= IMAGE ================= */}
-      <ImageContainer sx={{ display: { xs: "none", lg: "block" } }}>
-        <ImageBox>
-          <img
-            src="images/form-img.png"
-            alt="Courier"
-            style={{
-              width: "70%",
-              height: "100%",
-              objectFit: "contain",
-              objectPosition: "bottom right",
-            }}
-          />
-        </ImageBox>
-      </ImageContainer>
     </MainContainer>
   );
 };

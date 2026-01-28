@@ -4,6 +4,9 @@ import { BASE_URL, getAuthHeader } from "./config";
 
 // CREATE BOOKING
 export async function createBooking(data) {
+  console.log("booking payload: ", data);
+  alert("reached booking api");
+  console.log("reached booking api");
   const response = await axios.post(`${BASE_URL}/users/bookings`, data, {
     headers: getAuthHeader(),
   });

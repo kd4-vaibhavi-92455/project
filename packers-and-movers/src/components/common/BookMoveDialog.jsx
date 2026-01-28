@@ -3,7 +3,6 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  TextField,
   Button,
   IconButton,
 } from "@mui/material";
@@ -15,7 +14,22 @@ const BookMoveDialog = ({ open, onClose }) => {
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
       {/* ===== Header ===== */}
       <DialogTitle className="flex justify-between items-center">
-        Book a Move
+        <div className="flex items-center pl-2.5">
+          <img
+            src="images/form-img.png"
+            alt="Courier"
+            style={{
+              height: "50px",
+              objectFit: "contain",
+              objectPosition: "bottom right",
+            }}
+          />
+          <span>
+            <strong className="pl-2.5">Book a Move</strong>
+          </span>
+        </div>
+        {/* </ImageContainer> */}
+
         <IconButton onClick={onClose}>
           <CloseIcon />
         </IconButton>
@@ -23,25 +37,7 @@ const BookMoveDialog = ({ open, onClose }) => {
 
       {/* ===== Content ===== */}
       <DialogContent dividers className="space-y-4">
-        {/* <TextField
-          label="Pickup Location"
-          placeholder="Enter pickup address"
-          fullWidth
-        />
-
-        <TextField
-          label="Drop Location"
-          placeholder="Enter drop address"
-          fullWidth
-        />
-
-        <TextField
-          label="Moving Date"
-          type="date"
-          InputLabelProps={{ shrink: true }}
-          fullWidth
-        /> */}
-        <BookAMoveForm />
+        <BookAMoveForm onClose={onClose} />
       </DialogContent>
 
       {/* ===== Footer ===== */}
