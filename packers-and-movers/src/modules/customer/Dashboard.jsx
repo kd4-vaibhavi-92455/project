@@ -104,8 +104,7 @@ const Dashboard = () => {
               <HomeIcon />
               Home
             </div>
-
-            <IconButton color="error">
+            <IconButton color="error" onClick={logout}>
               <Logout />
             </IconButton>
           </Paper>
