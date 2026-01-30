@@ -77,9 +77,19 @@ const Footer = () => {
             <span className="block w-8 h-[2px] bg-gray-400 mt-2"></span>
           </h3>
           <ul className="space-y-3 text-sm text-black-1000">
-            <li>About Us</li>
-            <li>Our Services</li>
-            <li>Get In Touch</li>
+            {/* <li className="cursor-pointer transition-colors duration-300 hover:text-blue-600">About Us</li> */}
+            {/* <li className="cursor-pointer transition-colors duration-300 hover:text-blue-600">Our Services</li> */}
+            <li>
+              <a href="#services" className="cursor-pointer transition-colors duration-300 hover:text-blue-600">
+                Our Services
+            </a>
+            </li>
+            <li>
+              <a href="#contact" className="cursor-pointer transition-colors duration-300 hover:text-blue-600">
+                Get In Touch
+    </a>
+            </li>
+            {/* <li className="cursor-pointer transition-colors duration-300 hover:text-blue-600">Get In Touch</li> */}
             {/* <li>Pay Now</li>
             <li>FAQ</li> */}
           </ul>

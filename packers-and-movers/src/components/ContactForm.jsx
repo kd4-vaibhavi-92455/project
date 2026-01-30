@@ -26,6 +26,7 @@ const ContactForm = () => {
 
   return (
     <div
+      id="contact"
       className="bg-white py-24"
       fontFamily="Biryani,Arial,Helvetica,sans-serif"
     >

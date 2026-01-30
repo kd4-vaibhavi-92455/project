@@ -34,7 +34,7 @@ const Navbar = () => {
     { name: "Services", type: "scroll", id: "services" },
     { name: "Process", type: "scroll", id: "process" },
     // { name: "Tracking", type: "scroll", id: "tracking" },
-    { name: "About", type: "route", path: "/about" },
+    { name: "Contact", type: "route", path: "/contact" },
   ];
 
 
