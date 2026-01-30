@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BookingTable from "./BookingTable";
 
 import HomeIcon from "@mui/icons-material/Home";
@@ -28,35 +28,39 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../../providers/AuthProvider";
 
 import BookMoveDialog from "../../components/common/BookMoveDialog.jsx";
+import {
+  getBookingHistory,
+  getCurrentBookings,
+} from "../../services/booking.js";
 
 /* ---------------- DUMMY DATA ---------------- */
 
-const activeBookingsData = [
-  {
-    id: 1,
-    bookingId: "BK-9921",
-    serviceName: "Home Shifting (3BHK)",
-    scheduledDate: "2026-03-25",
-    status: "Confirmed",
-    totalAmount: 15500,
-  },
-  {
-    id: 2,
-    bookingId: "BK-8842",
-    serviceName: "Office Relocation",
-    scheduledDate: "2026-03-28",
-    status: "Pending",
-    totalAmount: 45000,
-  },
-  {
-    id: 3,
-    bookingId: "BK-7712",
-    serviceName: "Furniture Delivery",
-    scheduledDate: "2026-04-01",
-    status: "Confirmed",
-    totalAmount: 2500,
-  },
-];
+// const activeBookingsData = [
+//   {
+//     id: 1,
+//     bookingId: "BK-9921",
+//     serviceName: "Home Shifting (3BHK)",
+//     scheduledDate: "2026-03-25",
+//     status: "Confirmed",
+//     totalAmount: 15500,
+//   },
+//   {
+//     id: 2,
+//     bookingId: "BK-8842",
+//     serviceName: "Office Relocation",
+//     scheduledDate: "2026-03-28",
+//     status: "Pending",
+//     totalAmount: 45000,
+//   },
+//   {
+//     id: 3,
+//     bookingId: "BK-7712",
+//     serviceName: "Furniture Delivery",
+//     scheduledDate: "2026-04-01",
+//     status: "Confirmed",
+//     totalAmount: 2500,
+//   },
+// ];
 
 const pastBookingsData = [
   {
@@ -84,12 +88,35 @@ const Dashboard = () => {
   const [activeTab, setActiveTab] = useState(0);
   const { user, logout } = useAuth();
   const [openBookDialog, setOpenBookDialog] = useState(false);
-  // const my_user = {
-  //   name: "Mathew Anderson",
-  //   email: "mathew@gmail.com",
-  // };
+  const [activeBookings, setActiveBookings] = useState([]);
+  const [historyBookings, setHistoryBookings] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  console.log("recent bookings: ", activeBookings);
+  console.log("closed bookings: ", historyBookings);
+  // LOAD BOOKINGS
+  const loadBookings = async () => {
+    setLoading(true);
+    try {
+      const [current, history] = await Promise.all([
+        getCurrentBookings(),
+        getBookingHistory(),
+      ]);
+
+      setActiveBookings(current);
+      setHistoryBookings(history);
+    } catch (err) {
+      console.error("Failed to load bookings", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadBookings();
+  }, []);
 
   return (
     <div>
@@ -164,7 +191,16 @@ const Dashboard = () => {
 
           {/* ================= TAB CONTENT ================= */}
           <Box>
-            {activeTab === 0 && <BookingTable rows={activeBookingsData} />}
+            {activeTab === 0 && (
+              // <BookingTable rows={activeBookings} />
+              <BookingTable
+                title="Active Bookings"
+                rows={activeBookings}
+                loading={loading}
+                // onRequestCancel={handleRequestCancel}
+                // onFinalCancel={handleFinalCancel}
+              />
+            )}
 
             {activeTab === 1 && (
               <Card className="p-10 text-center rounded-2xl shadow-sm">

@@ -35,9 +35,12 @@ export async function cancelBooking(bookingId, reason) {
 
 // GET CURRENT BOOKINGS
 export async function getCurrentBookings() {
+  alert("1");
   const response = await axios.get(`${BASE_URL}/users/bookings/current`, {
     headers: getAuthHeader(),
   });
+  console.log("first");
+  console.log("getCurrentBookings: ", response);
   return response.data;
 }
 
@@ -46,6 +49,8 @@ export async function getBookingHistory() {
   const response = await axios.get(`${BASE_URL}/users/bookings/history`, {
     headers: getAuthHeader(),
   });
+  console.log("sec");
+  console.log("getBookingHistory: ", response);
   return response.data;
 }
 
