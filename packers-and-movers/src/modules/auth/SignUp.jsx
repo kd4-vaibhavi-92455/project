@@ -119,6 +119,15 @@ const SignUp = () => {
             Create Account
           </Button>
         </form>
+        <div className="text-center mt-4 mb-3">
+          <Typography color="text.secondary">
+            {" "}
+            <a className="text-blue-600" href="/login">
+              Login
+            </a>{" "}
+            if registered already
+          </Typography>
+        </div>
       </Box>
     </div>
   );

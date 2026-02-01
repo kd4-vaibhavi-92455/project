@@ -15,6 +15,7 @@ import PageNotFound from "./pages/PageNotFound";
 import { useLocation } from "react-router";
 import Contact from "./pages/Contact";
 import SignUp from "./modules/auth/SignUp";
+import Services from "./pages/Services";
 
 //const excludedPaths = ["/footer"];
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<PublicLayout />}>
             <Route path="/" index element={<Home />} />
             <Route path="/home" index element={<Home />} />
+            <Route path="/services" index element={<Services />} />
             <Route path="/contact" element={<Contact />} />
 
             <Route path="/footer" element={<Footer />} />

@@ -90,6 +90,15 @@ const Login = () => {
             LOGIN now
           </Button>
         </form>
+        <div className="text-center mt-6">
+          <Typography color="text.secondary">
+            Click{" "}
+            <a className="text-blue-600" href="/signup">
+              SignUp
+            </a>{" "}
+            if new user
+          </Typography>
+        </div>
       </Box>
     </div>
   );
