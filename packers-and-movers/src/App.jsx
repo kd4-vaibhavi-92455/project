@@ -25,49 +25,31 @@ function App() {
     <ThemeProvider>
       <AuthProvider>
         <Routes>
-          {/* visitor layout */}
-          <Route path="/project" element={<PublicLayout />}>
-            <Route path="/project" index element={<Home />} />
-            <Route path="/home" index element={<Home />} />
-            <Route path="/services" index element={<Services />} />
-            <Route path="/contact" element={<Contact />} />
-
-            <Route path="/footer" element={<Footer />} />
-            {/* <Route path="about" element={<About />} /> */}
-            {/* <Route path="contact" element={<Contact />} /> */}
-            {/* <Route path="services" element={<Services />} /> */}
+          {/* Public layout */}
+          <Route element={<PublicLayout />}>
+            <Route index element={<Home />} />
+            <Route path="home" element={<Home />} />
+            <Route path="services" element={<Services />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="footer" element={<Footer />} />
           </Route>
-          {/* <Route path="/customer" element={<CustomerDashboard />} /> */}
-          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
 
-          {/* protected routes */}
-          {/* <Route path="/user" element={<UserLayout />}> */}
-          {/* <Route
-            index
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          /> */}
+          {/* Auth */}
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+
+          {/* Protected */}
           <Route
-            path="/dashboard"
+            path="dashboard"
             element={
               <ProtectedRoute>
                 <Dashboard />
               </ProtectedRoute>
             }
           />
-          {/* </Route> */}
 
-          <Route path="/not-found" element={<PageNotFound />} />
-
-          {/* user layout */}
-          {/* <Route path="/user">
-          <Route index element={<Navbar />} />
-        </Route> */}
+          {/* 404 */}
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </AuthProvider>
     </ThemeProvider>
