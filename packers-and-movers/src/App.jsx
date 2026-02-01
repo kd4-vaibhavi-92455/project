@@ -26,8 +26,8 @@ function App() {
       <AuthProvider>
         <Routes>
           {/* visitor layout */}
-          <Route path="/" element={<PublicLayout />}>
-            <Route path="/" index element={<Home />} />
+          <Route path="/project" element={<PublicLayout />}>
+            <Route path="/project" index element={<Home />} />
             <Route path="/home" index element={<Home />} />
             <Route path="/services" index element={<Services />} />
             <Route path="/contact" element={<Contact />} />
