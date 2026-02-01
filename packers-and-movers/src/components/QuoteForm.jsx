@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import {
   Box,
   Button,
@@ -16,6 +17,64 @@ import {
 import { styled } from "@mui/material/styles";
 import DownloadIcon from "@mui/icons-material/Download";
 import CloseIcon from "@mui/icons-material/Close";
+import generateInvoicePDF from './GenerateInvoicePdf';
+
+// ===== STATIC DISTANCE & PRICING CONFIG =====
+
+const DISTANCE_MATRIX = {
+  Pune: {
+    Mumbai: 150,
+    Nagpur: 720,
+    Bhopal: 780,
+    Indore: 600,
+  },
+  Mumbai: {
+    Pune: 150,
+    Nagpur: 820,
+    Bhopal: 780,
+    Indore: 585,
+  },
+  Nagpur: {
+    Pune: 720,
+    Mumbai: 820,
+    Bhopal: 350,
+    Indore: 450,
+  },
+  Bhopal: {
+    Pune: 780,
+    Mumbai: 780,
+    Nagpur: 350,
+    Indore: 190,
+  },
+  Indore: {
+    Pune: 600,
+    Mumbai: 585,
+    Nagpur: 450,
+    Bhopal: 190,
+  },
+};
+
+const SERVICE_PRICING = {
+  VEHICLE: {
+    vehicleName: "Small Tempo / 3 Wheeler",
+    pricePerKm: 18,
+  },
+  HOUSE: {
+    vehicleName: "Container Truck",
+    pricePerKm: 30,
+  },
+  OFFICE: {
+    vehicleName: "Large Container Truck",
+    pricePerKm: 35,
+  },
+};
+
+const STATE_CITY_MAP = {
+  Maharashtra: ["Pune", "Mumbai", "Nagpur"],
+  "Madhya Pradesh": ["Bhopal", "Indore"],
+};
+
+
 
 /* ===============================
    COMMON INPUT STYLES (UNCHANGED)
@@ -111,8 +170,17 @@ const QuoteForm = () => {
     moveDate: "",
   });
 
+  const [pincodeError, setPincodeError] = useState("");
+
   const [open, setOpen] = useState(false);
   const [invoice, setInvoice] = useState(null);
+
+  const handleDownloadPDF = () => {
+    generateInvoicePDF({
+      formData,
+      invoice,
+    });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -123,31 +191,62 @@ const QuoteForm = () => {
      COST CALCULATION (SIMPLE)
 ================================ */
   const calculateCost = () => {
-    const baseMap = {
-      VEHICLE: 4000,
-      HOUSE: 9000,
-      OFFICE: 14000,
-    };
+    const { pickupCity, dropCity, serviceCategory } = formData;
 
-    let base = baseMap[formData.serviceCategory] || 0;
+    if (!pickupCity || !dropCity || !serviceCategory) return null;
 
-    if (
-      formData.pickupState &&
-      formData.dropState &&
-      formData.pickupState !== formData.dropState
-    ) {
-      base += 3000;
+    // ❌ Same city not allowed
+    if (pickupCity === dropCity) {
+      alert("Same city moves are not available right now.");
+      return null;
+
+      if (
+        formData.pickupPincode &&
+        formData.dropPincode &&
+        formData.pickupPincode === formData.dropPincode
+      ) {
+        alert("Pickup and Drop pincode cannot be same.");
+        return null;
+      }
+
     }
 
-    const handling = 700;
-    const gst = Math.round((base + handling) * 0.18);
-    const total = base + handling + gst;
+    const distance =
+      DISTANCE_MATRIX[pickupCity]?.[dropCity] ||
+      DISTANCE_MATRIX[dropCity]?.[pickupCity];
 
-    return { base, handling, gst, total };
+    if (!distance) return null;
+
+    const service = SERVICE_PRICING[serviceCategory];
+
+    const baseCost = distance * service.pricePerKm;
+    const handling = 700;
+    const total = baseCost + handling;
+
+    return {
+      distance,
+      vehicle: service.vehicleName,
+      base: baseCost,
+      handling,
+      total,
+    };
+
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (
+      formData.pickupPincode &&
+      formData.dropPincode &&
+      formData.pickupPincode === formData.dropPincode
+    ) {
+      setPincodeError("Pickup and Drop pincode cannot be same");
+      return;
+    }
+
+    setPincodeError("");
+
     const cost = calculateCost();
     setInvoice(cost);
     setOpen(true);
@@ -205,8 +304,9 @@ const QuoteForm = () => {
               sx={commonInputSx}
             />
             <FormControl size="small" sx={commonInputSx}>
-              <InputLabel>State</InputLabel>
+              <InputLabel id="pickup-state-label">State</InputLabel>
               <Select
+                labelId="pickup-state-label"
                 name="pickupState"
                 value={formData.pickupState}
                 label="State"
@@ -216,6 +316,7 @@ const QuoteForm = () => {
                 <MenuItem value="Madhya Pradesh">Madhya Pradesh</MenuItem>
               </Select>
             </FormControl>
+
             <FormControl size="small" sx={commonInputSx}>
               <InputLabel>City</InputLabel>
               <Select
@@ -235,16 +336,21 @@ const QuoteForm = () => {
             <TextField
               label="Pickup Pincode"
               name="pickupPincode"
+              inputProps={{ maxLength: 6, inputMode: "numeric", pattern: "[0-9]*" }}
               value={formData.pickupPincode}
               onChange={handleChange}
+              error={!!pincodeError}
+              helperText={pincodeError}
               sx={commonInputSx}
             />
+
             <TextField
               fullWidth
               label="Pickup Address"
               name="pickupAddressLine"
               value={formData.pickupAddressLine}
               onChange={handleChange}
+
               sx={{ ...commonInputSx, mb: 3 }}
             />
           </FormRow>
@@ -260,16 +366,19 @@ const QuoteForm = () => {
               sx={commonInputSx}
             />
             <FormControl size="small" sx={commonInputSx}>
-              <InputLabel>State</InputLabel>
+              <InputLabel id="drop-state-label">State</InputLabel>
               <Select
+                labelId="drop-state-label"
                 name="dropState"
                 value={formData.dropState}
                 label="State"
                 onChange={handleChange}
               >
+                <MenuItem value="Maharashtra">Maharashtra</MenuItem>
                 <MenuItem value="Madhya Pradesh">Madhya Pradesh</MenuItem>
               </Select>
             </FormControl>
+
             <FormControl size="small" sx={commonInputSx}>
               <InputLabel>City</InputLabel>
               <Select
@@ -278,8 +387,13 @@ const QuoteForm = () => {
                 label="City"
                 onChange={handleChange}
               >
-                <MenuItem value="Bhopal">Bhopal</MenuItem>
-                <MenuItem value="Indore">Indore</MenuItem>
+                {["Pune", "Mumbai", "Nagpur", "Bhopal", "Indore"]
+                  .filter((city) => city !== formData.pickupCity)
+                  .map((city) => (
+                    <MenuItem key={city} value={city}>
+                      {city}
+                    </MenuItem>
+                  ))}
               </Select>
             </FormControl>
           </FormRow>
@@ -288,10 +402,14 @@ const QuoteForm = () => {
             <TextField
               label="Drop Pincode"
               name="dropPincode"
+              inputProps={{ maxLength: 6, inputMode: "numeric", pattern: "[0-9]*" }}
               value={formData.dropPincode}
               onChange={handleChange}
+              error={!!pincodeError}
+              helperText={pincodeError}
               sx={commonInputSx}
             />
+
             <TextField
               fullWidth
               label="Drop Address"
@@ -319,10 +437,10 @@ const QuoteForm = () => {
             />
           </ImageBox>
         </ImageContainer>
-      </MainContainer>
+      </MainContainer >
 
       {/* ================= INVOICE DIALOG ================= */}
-      <Dialog
+      < Dialog
         open={open}
         onClose={() => setOpen(false)}
         maxWidth="sm"
@@ -345,9 +463,14 @@ const QuoteForm = () => {
             </Box>
 
             <Box>
-              <IconButton size="small" sx={{ color: "#000" }}>
+              <IconButton
+                size="small"
+                sx={{ color: "#000" }}
+                onClick={handleDownloadPDF}
+              >
                 <DownloadIcon fontSize="small" />
               </IconButton>
+
               <IconButton size="small" onClick={() => setOpen(false)}>
                 <CloseIcon fontSize="small" />
               </IconButton>
@@ -377,13 +500,27 @@ const QuoteForm = () => {
 
           <Divider sx={{ mb: 2 }} />
 
+          {invoice && (
+            <Box mb={2}>
+              <Typography fontSize={14}>
+                <strong>Service Type:</strong> {formData.serviceCategory}
+              </Typography>
+              <Typography fontSize={14}>
+                <strong>Assigned Vehicle:</strong> {invoice.vehicle}
+              </Typography>
+              <Typography fontSize={14}>
+                <strong>Distance:</strong> {invoice.distance} km
+    </Typography>
+            </Box>
+          )}
+
+
           {/* COST TABLE */}
           {invoice && (
             <>
               {[
                 ["Base Service Cost", invoice.base],
                 ["Handling Charges", invoice.handling],
-                ["GST (18%)", invoice.gst],
               ].map(([label, value]) => (
                 <Box
                   key={label}
@@ -412,7 +549,7 @@ const QuoteForm = () => {
             </>
           )}
         </DialogContent>
-      </Dialog>
+      </Dialog >
     </>
   );
 };
