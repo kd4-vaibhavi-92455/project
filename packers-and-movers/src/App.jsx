@@ -12,12 +12,11 @@ import Login from "./modules/auth/Login";
 // import UserLayout from "./layouts/UserLayout";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import PageNotFound from "./pages/PageNotFound";
-import { useLocation } from 'react-router';
-import Contact from './pages/Contact';
-
+import { useLocation } from "react-router";
+import Contact from "./pages/Contact";
+import SignUp from "./modules/auth/SignUp";
 
 //const excludedPaths = ["/footer"];
-
 
 function App() {
   const location = useLocation();
@@ -39,6 +38,7 @@ function App() {
           {/* <Route path="/customer" element={<CustomerDashboard />} /> */}
           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
 
           {/* protected routes */}
           {/* <Route path="/user" element={<UserLayout />}> */}

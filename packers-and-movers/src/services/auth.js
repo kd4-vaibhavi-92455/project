@@ -3,6 +3,7 @@ import { BASE_URL } from "./config";
 
 // CUSTOMER SIGNUP
 export async function signupCustomer(data) {
+  alert("signup api");
   const response = await axios.post(`${BASE_URL}/users/signup/customer`, data);
   return response.data;
 }

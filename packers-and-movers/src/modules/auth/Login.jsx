@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Box, TextField, Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router";
-// import { toast } from "react-toastify";
 import { signinUser } from "../../services/auth";
 import { useAuth } from "../../providers/AuthProvider";
+import { successAlert } from "../../utils/swalAlerts";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,57 +11,10 @@ const Login = () => {
   const navigate = useNavigate();
   const { setUser } = useAuth();
 
-  const handleLogin1 = async (e) => {
-    e.preventDefault();
-
-    if (!email || !password) {
-      // toast.error("Email and password required");
-      alert("Email and password required");
-      return;
-    }
-
-    try {
-      const credentials = { email, password };
-
-      // API CALL
-      const response = await signinUser(credentials);
-
-      /**
-       * response = {
-       *  token,
-       *  name,
-       *  role,
-       *  message
-       * }
-       */
-
-      // Store token
-      sessionStorage.setItem("token", response.token);
-
-      // Store full user
-      sessionStorage.setItem("user", JSON.stringify(response));
-
-      // Set AuthContext user
-      setUser(response);
-
-      // toast.success(response.message || "Login successful");
-      alert("Login successful");
-
-      // Redirect (change later if role-based)
-      navigate("/dashboard");
-    } catch (error) {
-      // toast.error(
-      //   error?.response?.data?.message || "Invalid email or password",
-      // );
-      alert("error 56");
-    }
-  };
-
   const handleLogin = async (e) => {
     e.preventDefault();
 
     if (!email || !password) {
-      // toast.error("Email and password required");
       alert("Email and password required");
       return;
     }
@@ -72,7 +25,6 @@ const Login = () => {
 
       // dashboard will remain there
       if (!response?.token) {
-        // toast.error("Invalid email or password");
         alert("Invalid email or password");
         return;
       }
@@ -81,11 +33,13 @@ const Login = () => {
       sessionStorage.setItem("user", JSON.stringify(response));
       setUser(response);
 
-      // toast.success(response.message || "Login successful");
-      alert("Login successful");
+      // (successAlert((title = "Login successful")), (text = "sdjsdhsjs"));
+      successAlert({
+        title: "Welcome to Dashboard !",
+        text: "Click ok to proceed",
+      });
       navigate("/dashboard");
     } catch (error) {
-      // toast.error(error?.response?.data?.message || "Login failed");
       alert("Login failed");
     }
   };
@@ -133,7 +87,7 @@ const Login = () => {
             sx={{ mt: 2, py: 1.4, fontWeight: "bold" }}
             variant="contained"
           >
-            LOGIN
+            LOGIN now
           </Button>
         </form>
       </Box>

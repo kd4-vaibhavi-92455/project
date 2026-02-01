@@ -35,7 +35,7 @@ export async function cancelBooking(bookingId, reason) {
 
 // GET CURRENT BOOKINGS
 export async function getCurrentBookings() {
-  alert("1");
+  // alert("getCurrentBokking");
   const response = await axios.get(`${BASE_URL}/users/bookings/current`, {
     headers: getAuthHeader(),
   });
